@@ -131,6 +131,9 @@ class chromeLikeTabs {
   addEventListeners(id) {
     var inp_url = document.getElementById(`inpurl-${id}`)
     var webv = document.getElementById(`webview-${id}`)
+    var btnGoBack = document.getElementById(`goback-${id}`)
+    var btnGoForward = document.getElementById(`goforward-${id}`)
+    var rl_button = document.getElementById(`reload-${id}`)
 
     //#region url input
     inp_url.addEventListener('keydown', (e) => {
@@ -156,15 +159,37 @@ class chromeLikeTabs {
 
     //#region webview event listsners
     webv.addEventListener('did-start-loading', (e) => {
-      var rl_button = document.getElementById(`reload-${id}`)
       rl_button.classList.remove('icon-refresh')
       rl_button.classList.add('icon-close')
+
+      if (webv.canGoBack()) {
+        btnGoBack.classList.remove('disabled')
+      } else {
+        btnGoBack.classList.add('disabled')
+      }
+
+      if (webv.canGoForward()) {
+        btnGoForward.classList.remove('disabled')
+      } else {
+        btnGoForward.classList.add('disabled')
+      }
     })
 
     webv.addEventListener('did-finish-load', (e) => {
-      var rl_button = document.getElementById(`reload-${id}`)
       rl_button.classList.remove('icon-close')
       rl_button.classList.add('icon-refresh')
+
+      if (webv.canGoBack()) {
+        btnGoBack.classList.remove('disabled')
+      } else {
+        btnGoBack.classList.add('disabled')
+      }
+
+      if (webv.canGoForward()) {
+        btnGoForward.classList.remove('disabled')
+      } else {
+        btnGoForward.classList.add('disabled')
+      }
     })
 
     webv.addEventListener('page-favicon-updated', (e) => {
@@ -172,8 +197,7 @@ class chromeLikeTabs {
     })
 
     webv.addEventListener('will-navigate', (e) => {
-      var inpURL = document.getElementById(`inpurl-${id}`)
-      inpURL.value = e.url
+      inp_url.value = e.url
     })
     //#endregion
   }
