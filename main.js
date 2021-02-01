@@ -74,8 +74,12 @@ function createWindow() {
 //#region App
 app.on('ready', () => {
     createWindow()
-    //AdBlocker = new adblocker(win, JSON.parse(fs.readFileSync(__dirname + '/block lists/everything.json')))
-    //AdBlocker.start()
+
+    //#region AdBlocker implementation
+    AdBlocker = new adblocker(win, JSON.parse(fs.readFileSync(__dirname + '/block lists/everything.json')))
+    AdBlocker.start()
+    //#endregion
+    
     var menu = Menu.buildFromTemplate(customMenu)
     win.setMenu(menu)
 })

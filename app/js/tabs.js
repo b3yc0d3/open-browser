@@ -5,16 +5,17 @@ class chromeLikeTabs {
    * @param {ConstructorOBJ} obj 
    */
   constructor(obj) {
-    this['tabContainer'] = obj.tabContainer
-    this['tabContentContainer'] = obj.tabContentContainer
+    this['tabContainer'] = obj.tabContainer // Tab List
+    this['tabContentContainer'] = obj.tabContentContainer // Tab Content with controls and WebView
 
-    this['varName'] = obj.varName
+    this['varName'] = obj.varName // Name of this decleration
+    // Events
     this['tabOnClick'] = obj.tabClickEvent
     this['tabAddClick'] = obj.tabAddClickEvent
     this['tabFocusChanged'] = obj.tabFocusChanged
 
     this['counter'] = 0
-    this['tabs'] = {}
+    this['tabs'] = {} // List of all currently created Tabs
     this['inited'] = false
 
     this['focusedTab'] = null
@@ -127,19 +128,24 @@ class chromeLikeTabs {
     this['tabAddClick'](id)
   }
 
+  /**
+   * Set Focuse to a Specific Tab by ID
+   * @param {int} id 
+   */
   focuseTab(id) {
-    var tab = document.getElementById(`tab-${id}`)
-    var tabContent = document.getElementById(`container-${id}`)
-    console.log(tabContent)
+    var tab = document.getElementById(`tab-${id}`) // get tab
+    var tabContent = document.getElementById(`container-${id}`) // get tab container
 
+    // set's current focused tab
     if (this['focusedTab'] != null) {
       this['focusedTab'].classList.remove('active')
       tab.classList.add('active')
     } else {
       tab.classList.add('active')
     }
-    this['focusedTab'] = tab
+    this['focusedTab'] = tab 
 
+    // set's current focused tab container
     if (this['focusedTabContainer'] != null) {
       this['focusedTabContainer'].classList.remove('active')
       tabContent.classList.add('active')
@@ -151,7 +157,12 @@ class chromeLikeTabs {
     this['tabFocusChanged'](this['tabs'][id])
   }
 
-  webviewLoadURL(url, id) {
+  /**
+   * Set's or changes the URL Location of the Focused WebView
+   * @param {String} url 
+   * @param {int} id 
+   */
+  webviewChangeURL(url, id) {
     var webv = document.getElementById(`webview-${id}`)
     webv.src = url
   }
