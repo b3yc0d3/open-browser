@@ -41,11 +41,13 @@ class chromeLikeTabs {
       var title = tabObject.title
       var favicon = tabObject.favicon || 'app/images/favicon_404.svg'
       var id = this['counter']
+      var url = tabObject.url || "https://duckduckgo.com/chrome_newtab"
 
       var tab_obj = {
         title: title,
         favicon: favicon,
-        tabId: id
+        tabId: id,
+        url: url
       }
 
       //#region TabItem
@@ -89,9 +91,9 @@ class chromeLikeTabs {
       div_0.classList.add('tab-pane')
       div_0.id = `container-${id}`
 
-      div_ctrls.innerHTML += `<button onclick="" ><i class="icon icon-arrow_back"></i></button>`
-      div_ctrls.innerHTML += `<button onclick="" ><i class="icon icon-arrow_forward"></i></button>`
-      div_ctrls.innerHTML += `<button onclick="" ><i class="icon icon-refresh"></i></button>`
+      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_goBack(${id})" ><i class="icon icon-arrow_back"></i></button>`
+      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_goForward(${id})" ><i class="icon icon-arrow_forward"></i></button>`
+      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_reload(${id})" ><i class="icon icon-refresh"></i></button>`
 
       div_inputb.classList.add('inputURL')
       div_inputb.innerHTML = `<input type="text" placeholder="URL">`
@@ -101,7 +103,7 @@ class chromeLikeTabs {
       div_ctrls.innerHTML += `<button onclick=""><i class="icon icon-more_vert"></i></button>`
 
       webv.id = `webview-${id}`
-      webv.setAttribute('src', 'https://duckduckgo.com/chrome_newtab')
+      webv.setAttribute('src', url)
 
       div_0.appendChild(div_ctrls)
       div_0.appendChild(webv)
@@ -157,6 +159,8 @@ class chromeLikeTabs {
     this['tabFocusChanged'](this['tabs'][id])
   }
 
+  //#region Helper Functions
+
   /**
    * Set's or changes the URL Location of the Focused WebView
    * @param {String} url 
@@ -211,6 +215,7 @@ class chromeLikeTabs {
       webv.openDevTools()
     }
   }
+  //#endregion
 }
 
 module.exports.chromeLikeTabs = chromeLikeTabs
