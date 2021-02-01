@@ -1,4 +1,6 @@
+const packJS = require(__dirname + '/package.json')
 const { chromeLikeTabs } = require(__dirname + '/app/js/tabs.js')
+const textHelper = require(__dirname + '/app/js/text_helper.js')
 
 const tabHandler = new chromeLikeTabs({
     tabContainer: document.getElementById('tab-container'),
@@ -6,7 +8,8 @@ const tabHandler = new chromeLikeTabs({
     varName: 'tabHandler',
     tabClickEvent: tabOnClick,
     tabAddClickEvent: tabAdd_OnClick,
-    tabFocusChanged: tabFocusChanged
+    tabFocusChanged: tabFocusChanged,
+    onTitleChange: titleChange
 })
 
 function tabOnClick(tab) {
@@ -18,7 +21,11 @@ function tabAdd_OnClick(id) {
 }
 
 function tabFocusChanged(details) {
-    document.title = `${details.title} - Hypero`
+    
+}
+
+function titleChange(details) {
+    document.title = `${details.title} - ${textHelper.titleCase(packJS.name.replace('-', ' '))}`
 }
 
 // init

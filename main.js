@@ -7,7 +7,7 @@ const fs = require('fs')
 const packJSON = require('./package.json')
 
 //libs
-const { adblocker } = require('./backend/adblocker.js')
+const { adblocker } = require('./scripts/adblocker.js')
 
 let win
 var userAgent = `Mozilla/5.0 ({{OS_INFO}}; {{ARCH}}) Gecko/20100101 Hypero/{{HYPERO_VERSION}} Chrome/{{CHROME_VERSION}} Safari/537.36`

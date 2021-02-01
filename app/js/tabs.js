@@ -13,6 +13,7 @@ class chromeLikeTabs {
     this['tabOnClick'] = obj.tabClickEvent
     this['tabAddClick'] = obj.tabAddClickEvent
     this['tabFocusChanged'] = obj.tabFocusChanged
+    this['onTitleChange'] = obj.onTitleChange
 
     this['counter'] = 0
     this['tabs'] = {} // List of all currently created Tabs
@@ -269,6 +270,7 @@ class chromeLikeTabs {
     var title = document.getElementById(`title-${id}`)
     title.innerText = text
     this['tabs'][id].title = text
+    this['onTitleChange']({ id: id, title: text })
   }
 
   //#region WebViewe Helper Functions
