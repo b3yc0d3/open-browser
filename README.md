@@ -1,3 +1,4 @@
+![NODE VERSION](https://img.shields.io/badge/NodeJS-v14.15.3-green?style=flat&logo=appveyor) ![NPM VERSION](https://img.shields.io/badge/npm-v6.14.11-orange?style=flat&logo=appveyor)
 ### what is open-browser?
 *open-browser* is Browser that respects your privacy
 
