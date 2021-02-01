@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2021 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="add" unicode="&#xe800;" d="M792 308h-250v-250h-84v250h-250v84h250v250h84v-250h250v-84z" horiz-adv-x="1000" />
+
+<glyph glyph-name="close" unicode="&#xe801;" d="M677 114l-177 177-177-177-59 59 177 177-177 177 59 59 177-177 177 177 59-59-177-177 177-177z" horiz-adv-x="1000" />
+
+<glyph glyph-name="extension" unicode="&#xe802;" d="M854 392h-62v166c0 46-38 84-84 84h-166v62c0 58-47 104-104 104s-105-46-105-104v-62h-166c-46 0-83-38-83-84v-158h62c62 0 112-50 112-112s-50-113-112-113h-63v-158c0-46 38-84 84-84h158v63c0 62 50 112 113 112 62 0 112-50 112-112v-63h158c46 0 84 38 84 84v166h62c58 0 104 47 104 105s-46 104-104 104z" horiz-adv-x="1000" />
+
+<glyph glyph-name="more_vert" unicode="&#xe803;" d="M500 517c46 0 83 37 83 83s-37 83-83 83-83-37-83-83 37-83 83-83z m0-84c-46 0-83-37-83-83s37-83 83-83 83 37 83 83-37 83-83 83z m0-250c-46 0-83-37-83-83s37-83 83-83 83 37 83 83-37 83-83 83z" horiz-adv-x="1000" />
+
+<glyph glyph-name="refresh" unicode="&#xe804;" d="M735 585c-67 68-164 108-270 97-152-16-278-140-295-293-23-202 133-372 330-372 133 0 247 78 300 190 14 28-6 60-37 60-15 0-30-9-37-22-47-102-160-166-283-138-93 20-167 96-187 188-35 162 88 305 244 305 69 0 131-29 176-74l-63-63c-26-26-8-71 29-71h150c23 0 41 18 41 41v150c0 37-45 56-71 30l-27-28z" horiz-adv-x="1000" />
+
+<glyph glyph-name="arrow_forward" unicode="&#xe805;" d="M208 308h466l-204-203c-16-16-16-43 0-59 17-16 43-16 59 0l275 274c16 17 16 43 0 59l-274 275c-17 16-43 16-59 0-16-16-16-42 0-59l203-203h-466c-23 0-41-19-41-42s18-42 41-42z" horiz-adv-x="1000" />
+
+<glyph glyph-name="arrow_back" unicode="&#xe806;" d="M792 392h-466l204 203c16 16 16 43 0 59-17 16-43 16-59 0l-275-274c-16-17-16-43 0-59l275-275c16-16 42-16 59 0 16 17 16 43 0 59l-204 203h466c23 0 41 19 41 42s-18 42-41 42z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>
