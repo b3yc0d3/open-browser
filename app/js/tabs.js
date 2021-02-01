@@ -70,6 +70,7 @@ class chromeLikeTabs {
       img.src = favicon
       img.id = `favicon-${id}`
       a.innerText = title
+      a.id = `title-${id}`
 
       button.classList.add('btnCloseTab')
       button.setAttribute('onclick', `${this['varName']}.closeTab(${id})`)
@@ -199,6 +200,10 @@ class chromeLikeTabs {
     webv.addEventListener('will-navigate', (e) => {
       inp_url.value = e.url
     })
+
+    webv.addEventListener('page-title-updated', (e) => {
+      this.setTabTitle(id, e.title)
+    })
     //#endregion
   }
 
@@ -253,6 +258,17 @@ class chromeLikeTabs {
     this['tabs'][id]['favicon'] = url
     var tabIcon = document.getElementById(`favicon-${id}`)
     tabIcon.src = url
+  }
+
+  /**
+   * Set's tab title
+   * @param {int} id 
+   * @param {Text} text 
+   */
+  setTabTitle(id, text) {
+    var title = document.getElementById(`title-${id}`)
+    title.innerText = text
+    this['tabs'][id].title = text
   }
 
   //#region WebViewe Helper Functions
