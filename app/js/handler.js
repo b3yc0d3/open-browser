@@ -9,8 +9,6 @@ const tabHandler = new chromeLikeTabs({
     tabFocusChanged: tabFocusChanged
 })
 
-tabHandler.init()
-
 function tabOnClick(tab) {
     console.log('tabOnClick', tab)
 }
@@ -22,3 +20,13 @@ function tabAdd_OnClick(id) {
 function tabFocusChanged(details) {
     document.title = `${details.title} - Hypero`
 }
+
+// init
+document.addEventListener('DOMContentLoaded', (e) => {
+    tabHandler.init()
+
+    tabHandler.addTab({
+        title: 'New Tab',
+        favicon: null
+    })
+})

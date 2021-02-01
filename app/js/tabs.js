@@ -231,20 +231,20 @@ class chromeLikeTabs {
     // set's current focused tab
     if (this['focusedTab'] != null) {
       this['focusedTab'].classList.remove('active')
-      tab.classList.add('active')
-    } else {
-      tab.classList.add('active')
+      this['focusedTab'] = null
     }
     this['focusedTab'] = tab
+    this['focusedTab'].classList.add('active')
 
     // set's current focused tab container
     if (this['focusedTabContainer'] != null) {
       this['focusedTabContainer'].classList.remove('active')
+      this['focusedTabContainer'] = tabContent
       tabContent.classList.add('active')
     } else {
+      this['focusedTabContainer'] = tabContent
       tabContent.classList.add('active')
     }
-    this['focusedTabContainer'] = tabContent
 
     this['tabFocusChanged'](this['tabs'][id])
   }
