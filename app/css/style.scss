@@ -35,6 +35,13 @@ body {
         url("app/vendors/fontello-d974056e/font/fontello.svg?15407294#fontello") format("svg");
     font-weight: normal;
     font-style: normal;
+
+    src: url("app/vendors/fontello-d2aece8e/font/fontello.eot?44936691");
+    src: url("app/vendors/fontello-d2aece8e/font/fontello.eot?44936691#iefix") format("embedded-opentype"),
+        url("app/vendors/fontello-d2aece8e/font/fontello.woff?44936691") format("woff"), url("app/vendors/fontello-d2aece8e/font/fontello.ttf?44936691") format("truetype"),
+        url("app/vendors/fontello-d2aece8e/font/fontello.svg?44936691#fontello") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
 
 .symbol {
