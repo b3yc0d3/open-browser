@@ -4,6 +4,7 @@
 ### Features
 - [x] Deep integrated AdBlocker (almost finished)
 - [ ] Settings
+     - [ ] Custom Themes
 - [ ] Custom AdBlock List's
 - [ ] Extensions
 
