@@ -12,11 +12,11 @@ const tabHandler = new chromeLikeTabs({
 tabHandler.init()
 
 function tabOnClick(tab) {
-    console.log(tab)
+    console.log('tabOnClick', tab)
 }
 
 function tabAdd_OnClick(id) {
-    console.log(`tab ${id} removed`)
+    console.log('tabAdded', id)
 }
 
 function tabFocusChanged(details) {

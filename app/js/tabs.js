@@ -115,6 +115,7 @@ class chromeLikeTabs {
       this['counter']++
 
       this.focuseTab(id)
+      this['tabAddClick'](id)
     }
   }
 
@@ -127,7 +128,8 @@ class chromeLikeTabs {
     document.getElementById(`container-${id}`).remove()
     delete this['tabs'][id]
 
-    this['tabAddClick'](id)
+    this['focusedTab'] = null
+    this['focusedTabContainer'] = null
   }
 
   /**
@@ -159,7 +161,7 @@ class chromeLikeTabs {
     this['tabFocusChanged'](this['tabs'][id])
   }
 
-  //#region Helper Functions
+  //#region WebViewe Helper Functions
 
   /**
    * Set's or changes the URL Location of the Focused WebView
@@ -181,7 +183,7 @@ class chromeLikeTabs {
       webv.goBack()
     }
   }
-  
+
   /**
    * Go forward in history
    * @param {int} id 
@@ -209,7 +211,7 @@ class chromeLikeTabs {
   webview_toggleDevTools(id) {
     var webv = document.getElementById(`webview-${id}`)
 
-    if(webv.isDevToolsOpen()) {
+    if (webv.isDevToolsOpen()) {
       webv.closeDevTools()
     } else {
       webv.openDevTools()
