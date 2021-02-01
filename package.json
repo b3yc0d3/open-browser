@@ -1,7 +1,7 @@
 {
-  "name": "browser",
+  "name": "open-browser",
   "version": "1.4.10",
-  "description": "",
+  "description": "A browser that respects your privacy",
   "main": "main.js",
   "author": "NikiNikOfficially",
   "license": "ISC",
