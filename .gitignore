@@ -1,2 +1,2 @@
-app/css/*.min.css
+*.min.css
 node_modules/*

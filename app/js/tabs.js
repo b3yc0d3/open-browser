@@ -68,6 +68,7 @@ class chromeLikeTabs {
 
       div.classList.add('top')
       img.src = favicon
+      img.id = `favicon-${id}`
       a.innerText = title
 
       button.classList.add('btnCloseTab')
@@ -87,16 +88,34 @@ class chromeLikeTabs {
       var div_ctrls = document.createElement('div')
       var div_inputb = document.createElement('div')
       var webv = document.createElement('webview')
+      var inp_url = document.createElement('input')
 
       div_0.classList.add('tab-pane')
       div_0.id = `container-${id}`
 
-      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_goBack(${id})" class="disabled"><i class="icon icon-arrow_back"></i></button>`
-      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_goForward(${id})" class="disabled"><i class="icon icon-arrow_forward"></i></button>`
-      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_reload(${id})" ><i class="icon icon-refresh"></i></button>`
+      div_ctrls.innerHTML += `<button id="goback-${id}" onclick="${this['varName']}.webview_goBack(${id})" class="disabled"><i class="icon icon-arrow_back"></i></button>`
+      div_ctrls.innerHTML += `<button id="goforward-${id}" onclick="${this['varName']}.webview_goForward(${id})" class="disabled"><i class="icon icon-arrow_forward"></i></button>`
+      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_reload(${id})" ><i id="reload-${id}" class="icon icon-refresh"></i></button>`
+
+      inp_url.id = `inpurl-${id}`
+      inp_url.setAttribute('type', 'text')
+      inp_url.setAttribute('placeholder', 'URL')
+      inp_url.setAttribute('autocomplete', 'url')
+      inp_url.setAttribute('autofocus', 'true')
+
+      inp_url.addEventListener('keydown', (e) => {
+        console.log('hallo')
+        if(e.code === 'Enter') {
+          if(inp_url.value.startsWith('https://') || inp_url.value.startsWith('http://') || inp_url.value.startsWith('file://')) {
+            this.webviewChangeURL(inp_url.value, id)            
+          } else {
+            this.webviewChangeURL(`https://duckduckgo.com/?q=${inp_url.value.replace(' ', '+')}&atb=v252-1&ia=web`, id)
+          }
+        }
+      })
 
       div_inputb.classList.add('inputURL')
-      div_inputb.innerHTML = `<input type="text" placeholder="URL">`
+      div_inputb.appendChild(inp_url)
 
       div_ctrls.appendChild(div_inputb)
       div_ctrls.classList.add('controls')
@@ -104,6 +123,28 @@ class chromeLikeTabs {
 
       webv.id = `webview-${id}`
       webv.setAttribute('src', url)
+      //#region webview event lustsners
+      webv.addEventListener('did-start-loading', (e) => {
+        var rl_button = document.getElementById(`reload-${id}`)
+        rl_button.classList.remove('icon-refresh')
+        rl_button.classList.add('icon-close')
+      })
+
+      webv.addEventListener('did-finish-load', (e) => {
+        var rl_button = document.getElementById(`reload-${id}`)
+        rl_button.classList.remove('icon-close')
+        rl_button.classList.add('icon-refresh')
+      })
+
+      webv.addEventListener('page-favicon-updated', (e) => {
+        this.changeTabFavicon(id, e.favicons[0])
+      })
+
+      webv.addEventListener('will-navigate', (e) => {
+        var inpURL = document.getElementById(`inpurl-${id}`)
+        inpURL.value = e.url
+      })
+      //#endregion
 
       div_0.appendChild(div_ctrls)
       div_0.appendChild(webv)
@@ -161,6 +202,17 @@ class chromeLikeTabs {
     this['tabFocusChanged'](this['tabs'][id])
   }
 
+  /**
+   * Set's tab favicon
+   * @param {int} id 
+   * @param {URL} url 
+   */
+  changeTabFavicon(id, url) {
+    this['tabs'][id]['favicon'] = url
+    var tabIcon = document.getElementById(`favicon-${id}`)
+    tabIcon.src = url
+  }
+
   //#region WebViewe Helper Functions
 
   /**
@@ -170,7 +222,9 @@ class chromeLikeTabs {
    */
   webviewChangeURL(url, id) {
     var webv = document.getElementById(`webview-${id}`)
+    var inpURL = document.getElementById(`inpurl-${id}`)
     webv.loadURL = url
+    inpURL.value = url
   }
 
   /**
@@ -201,7 +255,11 @@ class chromeLikeTabs {
    */
   webview_reload(id) {
     var webv = document.getElementById(`webview-${id}`)
-    webv.reload()
+    if (webv.isLoading()) {
+      webv.stop()
+    } else {
+      webv.reload()
+    }
   }
 
   /**
