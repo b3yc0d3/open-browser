@@ -101,18 +101,6 @@ class chromeLikeTabs {
       inp_url.setAttribute('type', 'text')
       inp_url.setAttribute('placeholder', 'URL')
       inp_url.setAttribute('autocomplete', 'url')
-      inp_url.setAttribute('autofocus', 'true')
-
-      inp_url.addEventListener('keydown', (e) => {
-        console.log('hallo')
-        if(e.code === 'Enter') {
-          if(inp_url.value.startsWith('https://') || inp_url.value.startsWith('http://') || inp_url.value.startsWith('file://')) {
-            this.webviewChangeURL(inp_url.value, id)            
-          } else {
-            this.webviewChangeURL(`https://duckduckgo.com/?q=${inp_url.value.replace(' ', '+')}&atb=v252-1&ia=web`, id)
-          }
-        }
-      })
 
       div_inputb.classList.add('inputURL')
       div_inputb.appendChild(inp_url)
@@ -123,28 +111,6 @@ class chromeLikeTabs {
 
       webv.id = `webview-${id}`
       webv.setAttribute('src', url)
-      //#region webview event lustsners
-      webv.addEventListener('did-start-loading', (e) => {
-        var rl_button = document.getElementById(`reload-${id}`)
-        rl_button.classList.remove('icon-refresh')
-        rl_button.classList.add('icon-close')
-      })
-
-      webv.addEventListener('did-finish-load', (e) => {
-        var rl_button = document.getElementById(`reload-${id}`)
-        rl_button.classList.remove('icon-close')
-        rl_button.classList.add('icon-refresh')
-      })
-
-      webv.addEventListener('page-favicon-updated', (e) => {
-        this.changeTabFavicon(id, e.favicons[0])
-      })
-
-      webv.addEventListener('will-navigate', (e) => {
-        var inpURL = document.getElementById(`inpurl-${id}`)
-        inpURL.value = e.url
-      })
-      //#endregion
 
       div_0.appendChild(div_ctrls)
       div_0.appendChild(webv)
@@ -155,9 +121,61 @@ class chromeLikeTabs {
       this['tabs'][id] = tab_obj
       this['counter']++
 
+      this.addEventListeners(id)
+
       this.focuseTab(id)
-      this['tabAddClick'](id)
+      //this['tabAddClick'](id)
     }
+  }
+
+  addEventListeners(id) {
+    var inp_url = document.getElementById(`inpurl-${id}`)
+    var webv = document.getElementById(`webview-${id}`)
+
+    //#region url input
+    inp_url.addEventListener('keydown', (e) => {
+
+      if (e.code === 'Enter') {
+        webv.focus()
+
+        // Internal URL matching like "chrome://<page>"
+        if (inp_url.value.startsWith('ob://')) {
+          this.webviewChangeURL(`https://duckduckgo.com/chrome_newtab`, id)
+          return
+        }
+
+        // Normal URL Matching
+        if (/(https?:\/\/|file:\/\/)?([\w\-])+\.{1}([a-zA-Z]{2,63})([\/\w-]*)*\/?\??([^#\n\r]*)?#?([^\n\r]*)/gm.test(inp_url.value)) {
+          this.webviewChangeURL((!inp_url.value.startsWith('https://') || !inp_url.value.startsWith('http://') || !inp_url.value.startsWith('file://') ? `http://${inp_url.value}` : inp_url.value), id)
+        } else {
+          this.webviewChangeURL(`https://duckduckgo.com/?q=${inp_url.value.replace(' ', '+')}`, id)
+        }
+      }
+    })
+    //#endregion
+
+    //#region webview event listsners
+    webv.addEventListener('did-start-loading', (e) => {
+      var rl_button = document.getElementById(`reload-${id}`)
+      rl_button.classList.remove('icon-refresh')
+      rl_button.classList.add('icon-close')
+    })
+
+    webv.addEventListener('did-finish-load', (e) => {
+      var rl_button = document.getElementById(`reload-${id}`)
+      rl_button.classList.remove('icon-close')
+      rl_button.classList.add('icon-refresh')
+    })
+
+    webv.addEventListener('page-favicon-updated', (e) => {
+      this.changeTabFavicon(id, e.favicons[0])
+    })
+
+    webv.addEventListener('will-navigate', (e) => {
+      var inpURL = document.getElementById(`inpurl-${id}`)
+      inpURL.value = e.url
+    })
+    //#endregion
   }
 
   /**
@@ -223,7 +241,7 @@ class chromeLikeTabs {
   webviewChangeURL(url, id) {
     var webv = document.getElementById(`webview-${id}`)
     var inpURL = document.getElementById(`inpurl-${id}`)
-    webv.loadURL = url
+    webv.src = url
     inpURL.value = url
   }
 
