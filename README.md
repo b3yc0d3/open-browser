@@ -1,5 +1,5 @@
 ### what is open-browser?
-*open-browser* is Browser that respects your privacy\
+*open-browser* is Browser that respects your privacy
 
 ### Features
 - [x] Deep integrated AdBlocker (almost finished)
