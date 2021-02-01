@@ -14,3 +14,6 @@
      `npm install electron`\
      `npm i`
 3. to run the Browser (in developer mode) use `electron .`
+
+### Credits
+- [Electron JS](https://www.electronjs.org/)
