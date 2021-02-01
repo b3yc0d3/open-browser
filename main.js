@@ -61,7 +61,7 @@ function createWindow() {
         protocol: "file:",
         slashes: true
     }), { userAgent: generateUA(userAgent) })
-     // https://adblock-tester.com/ https://canyoublockit.com/
+    // https://adblock-tester.com/ https://canyoublockit.com/
 
     // On Ready
     win.once('ready-to-show', () => {
@@ -74,14 +74,12 @@ function createWindow() {
 //#region App
 app.on('ready', () => {
     createWindow()
-
+    var menu = Menu.buildFromTemplate(customMenu)
+    win.setMenu(menu)
     //#region AdBlocker implementation
     AdBlocker = new adblocker(win, JSON.parse(fs.readFileSync(__dirname + '/block lists/everything.json')))
     AdBlocker.start()
     //#endregion
-    
-    var menu = Menu.buildFromTemplate(customMenu)
-    win.setMenu(menu)
 })
 
 app.on('window-all-closed', () => {

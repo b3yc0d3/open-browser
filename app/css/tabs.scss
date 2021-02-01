@@ -231,7 +231,12 @@
                 }
 
                 &.disabled {
-                    color: var(--icon-muted);
+                    > i {
+                        color: var(--icon-muted) !important;
+                    }
+                    &:hover {
+                        background: transparent !important;
+                    }
                 }
             }
 
