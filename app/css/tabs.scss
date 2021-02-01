@@ -219,7 +219,7 @@
                     top: 50%;
                     left: 50%;
                     transform: translateX(-50%) translateY(-50%);
-                    color: var(--icon-color);
+                    color: var(--icon-default);
                 }
 
                 &:hover {
@@ -228,6 +228,10 @@
 
                 &:first-child {
                     margin-left: 0;
+                }
+
+                &.disabled {
+                    color: var(--icon-muted);
                 }
             }
 

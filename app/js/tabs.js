@@ -91,8 +91,8 @@ class chromeLikeTabs {
       div_0.classList.add('tab-pane')
       div_0.id = `container-${id}`
 
-      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_goBack(${id})" ><i class="icon icon-arrow_back"></i></button>`
-      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_goForward(${id})" ><i class="icon icon-arrow_forward"></i></button>`
+      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_goBack(${id})" class="disabled"><i class="icon icon-arrow_back"></i></button>`
+      div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_goForward(${id})" class="disabled"><i class="icon icon-arrow_forward"></i></button>`
       div_ctrls.innerHTML += `<button onclick="${this['varName']}.webview_reload(${id})" ><i class="icon icon-refresh"></i></button>`
 
       div_inputb.classList.add('inputURL')
