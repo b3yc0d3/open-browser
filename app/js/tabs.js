@@ -143,7 +143,7 @@ class chromeLikeTabs {
     } else {
       tab.classList.add('active')
     }
-    this['focusedTab'] = tab 
+    this['focusedTab'] = tab
 
     // set's current focused tab container
     if (this['focusedTabContainer'] != null) {
@@ -164,7 +164,52 @@ class chromeLikeTabs {
    */
   webviewChangeURL(url, id) {
     var webv = document.getElementById(`webview-${id}`)
-    webv.src = url
+    webv.loadURL = url
+  }
+
+  /**
+   * Go back in history
+   * @param {int} id 
+   */
+  webview_goBack(id) {
+    var webv = document.getElementById(`webview-${id}`)
+    if (webv.canGoBack()) {
+      webv.goBack()
+    }
+  }
+  
+  /**
+   * Go forward in history
+   * @param {int} id 
+   */
+  webview_goForward(id) {
+    var webv = document.getElementById(`webview-${id}`)
+    if (webv.canGoForward()) {
+      webv.goForward()
+    }
+  }
+
+  /**
+   * Reload webview content
+   * @param {int} id 
+   */
+  webview_reload(id) {
+    var webv = document.getElementById(`webview-${id}`)
+    webv.reload()
+  }
+
+  /**
+   * Togge DevTool
+   * @param {int} id 
+   */
+  webview_toggleDevTools(id) {
+    var webv = document.getElementById(`webview-${id}`)
+
+    if(webv.isDevToolsOpen()) {
+      webv.closeDevTools()
+    } else {
+      webv.openDevTools()
+    }
   }
 }
 
