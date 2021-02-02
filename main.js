@@ -91,6 +91,7 @@ app.on('window-all-closed', () => {
 app.on('browser-window-created', function (e, window) {
     window.setMenu(null)
 })
+
 //#endregion
 
 function generateUA(pattern) {

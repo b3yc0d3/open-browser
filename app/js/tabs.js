@@ -128,7 +128,6 @@ class chromeLikeTabs {
       this.addEventListeners(id)
 
       this.focuseTab(id)
-      //this['tabAddClick'](id)
     }
   }
 
