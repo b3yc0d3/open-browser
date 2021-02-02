@@ -38,7 +38,7 @@ const customMenu = [{
 function createWindow() {
     win = new BrowserWindow({
         title: "Chromium",
-        icon: path.join(__dirname, "Chromium"),
+        //icon: path.join(__dirname, "Chromium"),
         show: false,
         frame: true,
         minHeight: 500,
@@ -49,9 +49,9 @@ function createWindow() {
             enableRemoteModule: true,
             webviewTag: true,
             webSecurity: false,
-            defaultFontFamily: {
+            /*defaultFontFamily: {
                 standard: 'Courier'
-            }
+            }*/
         }
     })
 
