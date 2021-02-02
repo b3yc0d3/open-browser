@@ -11,7 +11,7 @@
 
 ### Developer Setup
 1. clone this repo `git clone https://github.com/NikiNikOfficially/open-browser.git`
-2. cd in cloned repo fodler and execute `npm i` to install all necessary packages
+2. cd in the folder of the cloned repo and execute `npm i` to install all necessary packages
 3. execute `electron .` to run the Browser (in developer mode)
 
 ### Credits
