@@ -21,7 +21,7 @@ function tabAdd_OnClick(id) {
 }
 
 function tabFocusChanged(details) {
-    
+
 }
 
 function titleChange(details) {
@@ -36,4 +36,5 @@ document.addEventListener('DOMContentLoaded', (e) => {
         title: 'New Tab',
         favicon: null
     })
+
 })
