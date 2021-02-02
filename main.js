@@ -37,7 +37,7 @@ const customMenu = [{
 //CREATE WINDOW
 function createWindow() {
     win = new BrowserWindow({
-        title: "Chromium",
+        title: "Open Browser",
         //icon: path.join(__dirname, "Chromium"),
         show: false,
         frame: true,
