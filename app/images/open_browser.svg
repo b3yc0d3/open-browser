@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   data-v-fde0c5aa=""
+   viewBox="0 0 512 512"
+   class="iconLeft"
+   version="1.1"
+   id="svg25"
+   sodipodi:docname="open_browser.svg"
+   width="512"
+   height="512"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07, custom)"
+   inkscape:export-filename="/home/nikinik/Dokumente/Programmirung/electron apps/open-browser/app/images/open_browser_15x16.png"
+   inkscape:export-xdpi="3"
+   inkscape:export-ydpi="3">
+  <metadata
+     id="metadata29">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     id="namedview27"
+     showgrid="false"
+     inkscape:zoom="0.58100607"
+     inkscape:cx="-42.743273"
+     inkscape:cy="194.53267"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg25" />
+  <!---->
+  <defs
+     data-v-fde0c5aa=""
+     id="defs7">
+    <linearGradient
+       data-v-fde0c5aa=""
+       id="11b7f380-28b8-4649-af29-66bec505e8d5"
+       x1="0"
+       y1="0"
+       x2="300"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(281.15023,-7.2288545)">
+      <stop
+         data-v-fde0c5aa=""
+         offset="0%"
+         stop-color="#920DE9"
+         stop-opacity="1"
+         id="stop2" />
+      <stop
+         data-v-fde0c5aa=""
+         offset="100%"
+         stop-color="#1536F1"
+         stop-opacity="1"
+         id="stop4" />
+    </linearGradient>
+  </defs>
+  <defs
+     data-v-fde0c5aa=""
+     id="defs11">
+    <!---->
+  </defs>
+  <defs
+     data-v-fde0c5aa=""
+     id="defs16">
+    <!---->
+  </defs>
+  <!---->
+  <g
+     id="g863"
+     transform="matrix(13.370188,0,0,13.370188,-1922.7915,-2198.9325)">
+    <rect
+       style="opacity:0.998;fill:#818da1;fill-opacity:1;stroke:none;stroke-width:3.65755;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       id="rect856"
+       width="19.023798"
+       height="23.665543"
+       x="153.26357"
+       y="170.97971" />
+    <g
+       data-v-fde0c5aa=""
+       id="8c494594-f242-4254-8744-012af8235565"
+       stroke="none"
+       fill="#ffffff"
+       transform="matrix(1.9147076,0,0,1.9147076,139.98244,160.63592)"
+       style="fill:#445774;fill-opacity:1">
+      <path
+         d="m 12,8 c -0.6,0 -1,0.4 -1,1 v 1 h 2 V 9 C 13,8.4 12.6,8 12,8 Z"
+         id="path18"
+         style="fill:#445774;fill-opacity:1" />
+      <circle
+         cx="12"
+         cy="13.5"
+         r="1"
+         id="circle20"
+         style="fill:#445774;fill-opacity:1" />
+      <path
+         d="M 12,2 C 6.5,2 2,6.5 2,12 2,17.5 6.5,22 12,22 17.5,22 22,17.5 22,12 22,6.5 17.5,2 12,2 Z m 4,14 c 0,0.6 -0.4,1 -1,1 H 9 C 8.4,17 8,16.6 8,16 V 11 C 8,10.4 8.4,10 9,10 V 9 c 0,-1.7 1.3,-3 3,-3 1.7,0 3,1.3 3,3 v 1 c 0.6,0 1,0.4 1,1 z"
+         id="path22"
+         style="fill:#445774;fill-opacity:1" />
+    </g>
+  </g>
+</svg>

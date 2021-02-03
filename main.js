@@ -38,7 +38,7 @@ const customMenu = [{
 function createWindow() {
     win = new BrowserWindow({
         title: "Open Browser",
-        //icon: path.join(__dirname, "Chromium"),
+        icon: path.join(__dirname, "/app/images/open_browser_32x32.png"),
         show: false,
         frame: true,
         minHeight: 500,
@@ -61,7 +61,6 @@ function createWindow() {
         protocol: "file:",
         slashes: true
     }), { userAgent: generateUA(userAgent) })
-    // https://adblock-tester.com/ https://canyoublockit.com/
 
     // On Ready
     win.once('ready-to-show', () => {
