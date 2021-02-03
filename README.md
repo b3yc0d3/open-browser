@@ -19,6 +19,11 @@
 2. cd in the folder of the cloned repo and execute `npm i` to install all necessary packages
 3. execute `electron .` to run the Browser (in developer mode)
 
+### Links
+#### Websites for AdBlocker testing
+- [AdBlock Tester](https://adblock-tester.com/)
+- [Can You Block It?](https://canyoublockit.com/)
+
 ### Credits
 - [Electron JS](https://www.electronjs.org/)
 - [Material Icons](https://material.io/resources/icons/)
