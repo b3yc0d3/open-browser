@@ -1,9 +1,14 @@
-![NODE VERSION](https://img.shields.io/badge/Electron-v11.1.1-blue?style=flat) ![NODE VERSION](https://img.shields.io/badge/NodeJS-v14.15.3-green?style=flat) ![NPM VERSION](https://img.shields.io/badge/npm-v6.14.11-orange?style=flat)
+![PLATFORMS](https://img.shields.io/badge/platform-linux%20%7C%20windows-%23375b91) ![NODE VERSION](https://img.shields.io/badge/Electron-v11.1.1-blue?style=flat) ![NODE VERSION](https://img.shields.io/badge/NodeJS-v14.15.3-green?style=flat) ![NPM VERSION](https://img.shields.io/badge/npm-v6.14.11-orange?style=flat)
 ### what is open-browser?
-*open-browser* is Browser that respects your privacy
+*open-browser* is a Browser that respects your privacy
+
+<p align="center">
+  <img width="80%" src="/git_data/Screenshot_20210203_012147_v1.7.0.png" />
+</p>
 
 ### Features
 - [x] Deep integrated AdBlocker (almost finished)
+- [ ] Context Menu's (Website and Browser tab stuff)
 - [ ] Settings
      - [ ] Custom Themes
 - [ ] Custom AdBlock List's
