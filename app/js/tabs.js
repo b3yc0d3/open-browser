@@ -110,7 +110,7 @@ class chromeLikeTabs {
 
       div_ctrls.appendChild(div_inputb)
       div_ctrls.classList.add('controls')
-      div_ctrls.innerHTML += `<div id="custom-btns-${id}" style="display: flex; margin: 0 2.5px;"><button class="disabled"><i class="icon icon-extension"></i></button><button class="disabled"><i style="color: var(--background-accent) !important; opacity: .5;" class="icon icon-agent"></i></button></div>`
+      div_ctrls.innerHTML += `<div id="custom-btns-${id}" style="display: flex; margin: 0 2.5px;"><button class="disabled"><i class="icon icon-download"></i></button><button class="disabled"><i class="icon icon-extension"></i></button><button class="disabled"><i style="color: var(--background-accent) !important; opacity: .5;" class="icon icon-agent"></i></button></div>`
       div_ctrls.innerHTML += `<button onclick=""><i class="icon icon-more_vert"></i></button>`
 
       webv.id = `webview-${id}`
