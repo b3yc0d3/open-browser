@@ -1,4 +1,4 @@
-![PLATFORMS](https://img.shields.io/badge/platform-linux%20%7C%20windows-%23375b91) ![NODE VERSION](https://img.shields.io/badge/Electron-v11.1.1-blue?style=flat) ![NODE VERSION](https://img.shields.io/badge/NodeJS-v14.15.3-green?style=flat) ![NPM VERSION](https://img.shields.io/badge/npm-v6.14.11-orange?style=flat)
+![PLATFORMS](https://img.shields.io/badge/platform-linux%20x86__x64%20%7C%20windows%20x86__x64-%23375b91) ![NODE VERSION](https://img.shields.io/badge/Electron-v11.1.1-blue?style=flat) ![NODE VERSION](https://img.shields.io/badge/NodeJS-v14.15.3-green?style=flat) ![NPM VERSION](https://img.shields.io/badge/npm-v6.14.11-orange?style=flat)
 ### what is open-browser?
 *open-browser* is a Browser that respects your privacy
 
