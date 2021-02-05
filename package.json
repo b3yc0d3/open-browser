@@ -1,18 +1,25 @@
 {
   "name": "open-browser",
+  "productName": "Open Browser",
   "version": "1.7.0",
   "description": "A browser that respects your privacy",
   "main": "main.js",
   "author": "NikiNikOfficially",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.1"
-  },
-  "devDependencies": {
+    "node-fetch": "^2.6.1",
     "electron": "^11.1.1"
   },
+  "devDependencies": {
+    "electron": "^11.1.1",
+    "electron-packager": "^15.2.0"
+  },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=app/images/darwin/open_browser_64x64.icns --prune=true --out=release-builds",
+    "pack-win32": "electron-packager . open-browser --overwrite --platform=win32 --arch=ia32 --icon=app/images/windows/open_browser_64x64.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Open Browser\"",
+    "pack-win64": "electron-packager . open-browser --overwrite --asar=true --platform=win64 --arch=ia32 --icon=app/images/windows/open_browser_64x64.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Open Browser\"",
+    "pack-linux": "electron-packager . open-browser --overwrite --asar=true --platform=linux --arch=x64 --icon=app/images/open_browser_64x64.png --prune=true --out=release-builds"
   },
   "repository": {
     "type": "git",
