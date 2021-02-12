@@ -1,0 +1,5 @@
+class Content {
+    constructor(obj) {
+        
+    }
+}

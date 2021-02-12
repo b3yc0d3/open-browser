@@ -40,7 +40,7 @@ class chromeLikeTabs {
   addTab(tabObject) {
     if (this['inited']) {
       var title = tabObject.title
-      var favicon = tabObject.favicon || 'app/images/favicon_404.svg'
+      var favicon = (tabObject.favicon == null ? 'app/images/favicon_404.svg' : tabObject.favicon)
       var id = this['counter']
       var url = tabObject.url || "https://duckduckgo.com/chrome_newtab"
 
@@ -70,6 +70,7 @@ class chromeLikeTabs {
       div.classList.add('top')
       img.src = favicon
       img.id = `favicon-${id}`
+      img.setAttribute('onerror', 'this.src="app/images/favicon_404.svg"')
       a.innerText = title
       a.id = `title-${id}`
 
@@ -104,6 +105,7 @@ class chromeLikeTabs {
       inp_url.setAttribute('placeholder', 'URL')
       inp_url.setAttribute('autocomplete', 'url')
       inp_url.setAttribute('onfocus', 'this.select()')
+      inp_url.setAttribute('value', url)
 
       div_inputb.classList.add('inputURL')
       div_inputb.appendChild(inp_url)
@@ -206,6 +208,14 @@ class chromeLikeTabs {
     webv.addEventListener('page-title-updated', (e) => {
       this.setTabTitle(id, e.title)
     })
+
+    webv.addEventListener('new-window', (e) => {
+      this.addTab({
+        title: '',
+        favicon: null,
+        url: e.url
+      })
+    })
     //#endregion
   }
 
@@ -270,6 +280,7 @@ class chromeLikeTabs {
   setTabTitle(id, text) {
     var title = document.getElementById(`title-${id}`)
     title.innerText = text
+    title.setAttribute('title', text)
     this['tabs'][id].title = text
     this['onTitleChange']({ id: id, title: text })
   }
