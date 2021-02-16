@@ -7,12 +7,15 @@
 </p>
 
 ### Features
-- [x] Deep integrated AdBlocker (almost finished)
+- [ ] Deep integrated Blocker
+     - [x] AdBlock
+     - [ ] Tracker Blocking
+     - [ ] Analystics Blocking
 - [ ] Context Menu's (Website and Browser tab stuff)
-- [ ] Settings
+- [ ] ~Settings~
      - [ ] Custom Themes
-- [ ] Custom AdBlock List's
-- [ ] Extensions
+- [ ] ~Custom AdBlock List's~
+- [ ] ~Extensions~
 
 ### Developer Setup
 1. clone this repo `git clone https://github.com/NikiNikOfficially/open-browser.git`
