@@ -44,14 +44,12 @@ function createWindow() {
         minHeight: 500,
         minWidth: 800,
         enableRemoteModule: true,
+        offscreen: false,
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true,
             webviewTag: true,
             webSecurity: false,
-            /*defaultFontFamily: {
-                standard: 'Courier'
-            }*/
         }
     })
 
@@ -75,10 +73,10 @@ app.on('ready', () => {
     createWindow()
     var menu = Menu.buildFromTemplate(customMenu)
     win.setMenu(menu)
-    //#region AdBlocker implementation
-    AdBlocker = new adblocker(win, JSON.parse(fs.readFileSync(__dirname + '/block lists/everything.json')))
+
+    /* Deep Integrated Blocker */
+    AdBlocker = new adblocker(win, [__dirname + '/lists/list_01.json'])
     AdBlocker.start()
-    //#endregion
 })
 
 app.on('window-all-closed', () => {

@@ -1,2 +1,3 @@
 app/css/*.min.css
 node_modules/*
+lists/list_01.json
