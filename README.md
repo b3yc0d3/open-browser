@@ -7,7 +7,7 @@
 </p>
 
 ### Features
-- Deep integrated Blocker [see more]()
+- Deep integrated Blocker [see more](../../wiki/Deep-Integrated-Blocker)
 
 ### Developer Setup
 1. clone this repo `git clone https://github.com/NikiNikOfficially/open-browser.git`
