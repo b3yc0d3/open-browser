@@ -1,4 +1,4 @@
-class chromeLikeTabs {
+class Tabs {
 
   /**
    * Constructor
@@ -348,6 +348,7 @@ class chromeLikeTabs {
     }
   }
   //#endregion
+
 }
 
-module.exports.chromeLikeTabs = chromeLikeTabs
+module.exports.Tabs = Tabs

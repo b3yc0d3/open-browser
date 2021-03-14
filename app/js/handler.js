@@ -1,8 +1,8 @@
 const packJS = require(__dirname + '/package.json')
-const { chromeLikeTabs } = require(__dirname + '/app/js/tabs.js')
+const { Tabs } = require(__dirname + '/app/js/Tabs.js')
 const textHelper = require(__dirname + '/app/js/text_helper.js')
 
-const tabHandler = new chromeLikeTabs({
+const tabHandler = new Tabs({
     tabContainer: document.getElementById('tab-container'),
     tabContentContainer: document.getElementById('tab-content'),
     varName: 'tabHandler',
