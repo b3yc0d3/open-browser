@@ -20,7 +20,7 @@ class Tabs {
     this['inited'] = false
 
     this['focusedTab'] = null
-    this['focusedTabContainer'] = null
+    this['lastFocusedTabID'] = null
   }
 
   /**
@@ -75,7 +75,10 @@ class Tabs {
       a.id = `title-${id}`
 
       button.classList.add('btnCloseTab')
-      button.setAttribute('onclick', `${this['varName']}.closeTab(${id})`)
+      button.addEventListener('click', (e) => {
+        this['closed'] = true
+        this.closeTab(id)
+      })
       i_tag.classList.add('symbol')
       i_tag.classList.add('icon-close')
 
@@ -228,8 +231,9 @@ class Tabs {
     document.getElementById(`container-${id}`).remove()
     delete this['tabs'][id]
 
-    this['focusedTab'] = null
-    this['focusedTabContainer'] = null
+    if (this['lastFocusedTabID'] != null && this['focusedTab'].id == id) {
+      this.focuseTab(this['lastFocusedTabID'])
+    }
   }
 
   /**
@@ -237,28 +241,30 @@ class Tabs {
    * @param {int} id 
    */
   focuseTab(id) {
-    var tab = document.getElementById(`tab-${id}`) // get tab
-    var tabContent = document.getElementById(`container-${id}`) // get tab container
+    var _id = id
 
-    // set's current focused tab
-    if (this['focusedTab'] != null) {
-      this['focusedTab'].classList.remove('active')
-      this['focusedTab'] = null
-    }
-    this['focusedTab'] = tab
-    this['focusedTab'].classList.add('active')
-
-    // set's current focused tab container
-    if (this['focusedTabContainer'] != null) {
-      this['focusedTabContainer'].classList.remove('active')
-      this['focusedTabContainer'] = tabContent
-      tabContent.classList.add('active')
-    } else {
-      this['focusedTabContainer'] = tabContent
-      tabContent.classList.add('active')
+    if(document.getElementById(`tab-${_id}`) == undefined) {
+      _id = this['lastFocusedTabID']
     }
 
-    this['tabFocusChanged'](this['tabs'][id])
+    var tab = document.getElementById(`tab-${_id}`) // get tab
+    var tabContent = document.getElementById(`container-${_id}`) // get tab container
+
+    console.log(tab)
+
+    try {
+      document.getElementById(`tab-${this['focusedTab']}`).classList.remove('active')
+      document.getElementById(`container-${this['focusedTab']}`).classList.remove('active')
+    } catch (err) {
+      // i dont care if here is a error tbh
+    }
+
+    this['lastFocusedTabID'] = this['focusedTab']
+    this['focusedTab'] = _id
+    tab.classList.add('active')
+    tabContent.classList.add('active')
+
+    this['tabFocusChanged'](this['tabs'][_id])
   }
 
   /**
