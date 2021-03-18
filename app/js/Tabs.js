@@ -243,6 +243,7 @@ class Tabs {
   focuseTab(id) {
     var _id = id
 
+    /* Check if given ID is valid */
     if(document.getElementById(`tab-${_id}`) == undefined) {
       _id = this['lastFocusedTabID']
     }
@@ -250,8 +251,7 @@ class Tabs {
     var tab = document.getElementById(`tab-${_id}`) // get tab
     var tabContent = document.getElementById(`container-${_id}`) // get tab container
 
-    console.log(tab)
-
+    /* Try to remove "acvtive" from current focused Tab */
     try {
       document.getElementById(`tab-${this['focusedTab']}`).classList.remove('active')
       document.getElementById(`container-${this['focusedTab']}`).classList.remove('active')
@@ -264,6 +264,7 @@ class Tabs {
     tab.classList.add('active')
     tabContent.classList.add('active')
 
+    /* Trigger Event for user */
     this['tabFocusChanged'](this['tabs'][_id])
   }
 
