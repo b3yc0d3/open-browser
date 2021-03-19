@@ -156,7 +156,10 @@ class Tabs {
         }
 
         // Normal URL Matching
-        if (/(https?:\/\/|file:\/\/)?([\w\-])+\.{1}([a-zA-Z]{2,63})([\/\w-]*)*\/?\??([^#\n\r]*)?#?([^\n\r]*)/gm.test(inp_url.value)) {
+        /*if(inp_url.startsWith('https://') || inp_url.startsWith('http://') || inp_url.startsWith('file://') || ) {
+
+        }
+        */if (/(https?:\/\/|file:\/\/)?([\w\-])+\.{1}([a-zA-Z]{2,63})([\/\w-]*)*\/?\??([^#\n\r]*)?#?([^\n\r]*)/gm.test(inp_url.value)) {
           this.webviewChangeURL((!inp_url.value.startsWith('https://') || !inp_url.value.startsWith('http://') || !inp_url.value.startsWith('file://') ? `http://${inp_url.value}` : inp_url.value), id)
         } else {
           this.webviewChangeURL(`https://duckduckgo.com/?q=${inp_url.value.replace(' ', '+')}`, id)
