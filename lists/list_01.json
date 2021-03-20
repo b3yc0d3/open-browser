@@ -1073,5 +1073,14 @@
     "*://analyticsonline.top/*",
     "*://analyticsrequest.com/*",
     "*://analyticsretail.net/*",
-    "*://analyticstest.net/*"
+    "*://analyticstest.net/*",
+    "*://*.criteo.com/*",
+    "*://*.criteo.net/*",
+    "*://*.pubmatic.com/*",
+    "*://*.casalemedia.com/*",
+    "*://*.indexww.com/*",
+    "*://*.teads.tv/*",
+    "*://*.eyeota.net/*",
+    "*://*.rlcdn.com/*",
+    "*://cms.analytics.yahoo.com/*"
 ]
