@@ -1082,5 +1082,7 @@
     "*://*.teads.tv/*",
     "*://*.eyeota.net/*",
     "*://*.rlcdn.com/*",
-    "*://cms.analytics.yahoo.com/*"
+    "*://*.analytics.yahoo.com/*",
+    "*://*.yandex.ru/*",
+    "*://*.go-mpulse.net/*"
 ]

@@ -75,7 +75,7 @@ app.on('ready', () => {
     win.setMenu(menu)
 
     /* Deep Integrated Blocker */
-    AdBlocker = new adblocker(win, [__dirname + '/lists/list_01.json'])
+    AdBlocker = new adblocker(win, [__dirname + '/lists/list_01.json', __dirname + '/lists/list_02.json'])
     AdBlocker.start()
 })
 
