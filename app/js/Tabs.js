@@ -148,21 +148,23 @@ class Tabs {
 
       if (e.code === 'Enter') {
         webv.focus()
+        var url = inp_url.value
 
         // Internal URL matching like "chrome://<page>"
-        if (inp_url.value.startsWith('ob://')) {
+        if (url.startsWith('ob://')) {
           this.webviewChangeURL(`https://duckduckgo.com/chrome_newtab`, id)
           return
         }
 
-        // Normal URL Matching
-        /*if(inp_url.startsWith('https://') || inp_url.startsWith('http://') || inp_url.startsWith('file://') || ) {
 
-        }
-        */if (/(https?:\/\/|file:\/\/)?([\w\-])+\.{1}([a-zA-Z]{2,63})([\/\w-]*)*\/?\??([^#\n\r]*)?#?([^\n\r]*)/gm.test(inp_url.value)) {
-          this.webviewChangeURL((!inp_url.value.startsWith('https://') || !inp_url.value.startsWith('http://') || !inp_url.value.startsWith('file://') ? `http://${inp_url.value}` : inp_url.value), id)
+        if (/(https?:\/\/|file:\/\/)?([\w\-])+\.{1}([a-zA-Z]{2,63})([\/\w-]*)*\/?\??([^#\n\r]*)?#?([^\n\r]*)/gm.test(url)) {
+          if (url.startsWith('https://') || url.startsWith('http://' || url.startsWith('file://'))) {
+            return this.webviewChangeURL(url, id)
+          } else {
+            return this.webviewChangeURL(`https://${url}`, id)
+          }
         } else {
-          this.webviewChangeURL(`https://duckduckgo.com/?q=${inp_url.value.replace(' ', '+')}`, id)
+          return this.webviewChangeURL(`https://duckduckgo.com/?q=${url.replace(' ', '+')}`, id)
         }
       }
     })
@@ -247,7 +249,7 @@ class Tabs {
     var _id = id
 
     /* Check if given ID is valid */
-    if(document.getElementById(`tab-${_id}`) == undefined) {
+    if (document.getElementById(`tab-${_id}`) == undefined) {
       _id = this['lastFocusedTabID']
     }
 
