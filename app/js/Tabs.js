@@ -52,41 +52,16 @@ class Tabs {
       }
 
       //#region TabItem
-      var LI = document.createElement('li')   // 1
-      var div = document.createElement('div') // 2
-      var img = document.createElement('img') // 3
-      var a = document.createElement('a')     // 4
-
-      var button = document.createElement('button') // 5
-      var i_tag = document.createElement('i')       // 5.1
-
-      LI.setAttribute('tabID', id)
-      LI.id = `tab-${id}`
-      LI.addEventListener('click', (e) => {
-        this['tabOnClick'](tab_obj)
-        this.focuseTab(id)
+      var tab_item = new TabItem(tab_obj, {
+        tabOnClick: () => {
+          this['tabOnClick'](tab_obj)
+          this.focuseTab(id)
+        },
+        tabcCosed: () => {
+          this['closed'] = true
+          this.closeTab(id)
+        }
       })
-
-      div.classList.add('top')
-      img.src = favicon
-      img.id = `favicon-${id}`
-      img.setAttribute('onerror', 'this.src="app/images/favicon_404.svg"')
-      a.innerText = title
-      a.id = `title-${id}`
-
-      button.classList.add('btnCloseTab')
-      button.addEventListener('click', (e) => {
-        this['closed'] = true
-        this.closeTab(id)
-      })
-      i_tag.classList.add('symbol')
-      i_tag.classList.add('icon-close')
-
-      button.appendChild(i_tag)
-      LI.appendChild(div)
-      LI.appendChild(img)
-      LI.appendChild(a)
-      LI.appendChild(button)
       //#endregion
 
       //#region TabContent
@@ -125,7 +100,7 @@ class Tabs {
       div_0.appendChild(webv)
       //#endregion
 
-      this['tabList'].insertBefore(LI, document.getElementById('buttonAddNewTab'))
+      this['tabList'].insertBefore(tab_item.getHTML(), document.getElementById('buttonAddNewTab'))
       this['tabContentContainer'].appendChild(div_0)
       this['tabs'][id] = tab_obj
       this['counter']++
@@ -361,6 +336,56 @@ class Tabs {
   }
   //#endregion
 
+}
+
+class TabItem {
+  constructor(tab_object, events) {
+    this['title'] = tab_object.title
+    this['favicon'] = (tab_object.favicon == null ? 'app/images/favicon_404.svg' : tab_object.favicon)
+    this['id'] = tab_object.tabId
+    this['url'] = tab_object.url || "https://duckduckgo.com/chrome_newtab"
+
+    this['evnt_func'] = events
+  }
+
+  getHTML() {
+    var tab_li = document.createElement('li')   // 1
+    var line_div = document.createElement('div') // 2
+    var img_favicon = document.createElement('img') // 3
+    var a_title = document.createElement('a')     // 4
+
+    var button_close = document.createElement('button') // 5
+    var i_tag = document.createElement('i')       // 5.1
+
+    tab_li.setAttribute('tabID', this['id'])
+    tab_li.id = `tab-${this['id']}`
+    tab_li.addEventListener('click', (e) => {
+      this['evnt_func']['tabOnClick']()
+    })
+
+    line_div.classList.add('top')
+    img_favicon.src = this['favicon']
+    img_favicon.id = `favicon-${this['id']}`
+    img_favicon.setAttribute('onerror', 'this.src="app/images/favicon_404.svg"')
+
+    a_title.innerText = this['title']
+    a_title.id = `title-${this['id']}`
+
+    button_close.classList.add('btnCloseTab')
+    button_close.addEventListener('click', (e) => {
+      this['evnt_func']['tabcCosed']()
+    })
+    i_tag.classList.add('symbol')
+    i_tag.classList.add('icon-close')
+
+    button_close.appendChild(i_tag)
+    tab_li.appendChild(line_div)
+    tab_li.appendChild(img_favicon)
+    tab_li.appendChild(a_title)
+    tab_li.appendChild(button_close)
+
+    return tab_li
+  }
 }
 
 module.exports.Tabs = Tabs
