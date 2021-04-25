@@ -12,16 +12,18 @@ const tabHandler = new Tabs({
     onTitleChange: titleChange
 })
 
+var currentTab = null
+
 function tabOnClick(tab) {
-    console.log('tabOnClick', tab)
+
 }
 
 function tabAdd_OnClick(id) {
-    console.log('tabAdded', id)
+
 }
 
 function tabFocusChanged(details) {
-
+    currentTab = details.tabId
 }
 
 function titleChange(details) {
@@ -37,4 +39,20 @@ document.addEventListener('DOMContentLoaded', (e) => {
         favicon: null
     })
 
+    tabHandler.getWebView(currentTab).addEventListener('ipc-message', onIpcMessage)
+
 })
+
+function onIpcMessage(event) {
+    const { args, channel } = event
+
+    switch (channel) {
+        case 'reload':
+            tabHandler.webview_reload(currentTab)
+            break;
+
+        case 'toggleDevTools':
+            tabHandler.webview_toggleDevTools(currentTab)
+            break;
+    }
+}

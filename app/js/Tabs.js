@@ -83,7 +83,7 @@ class Tabs {
       inp_url.setAttribute('placeholder', 'URL')
       inp_url.setAttribute('autocomplete', 'url')
       inp_url.setAttribute('onfocus', 'this.select()')
-      inp_url.setAttribute('value', url)
+      //inp_url.setAttribute('value', url)
 
       div_inputb.classList.add('inputURL')
       div_inputb.appendChild(inp_url)
@@ -95,6 +95,8 @@ class Tabs {
 
       webv.id = `webview-${id}`
       webv.setAttribute('src', url)
+      webv.setAttribute('nodeintegration', '')
+      webv.setAttribute('preload', 'app/js/webview.js')
 
       div_0.appendChild(div_ctrls)
       div_0.appendChild(webv)
@@ -128,7 +130,7 @@ class Tabs {
         // Internal URL matching like "chrome://<page>"
         /* MOVED TO ./scripts/protocols.js */
 
-        if (url.startsWith('ob')) {
+        if (url.startsWith('ob') || url.startsWith('file')) {
           return this.webviewChangeURL(url, id)
         }
 
@@ -186,7 +188,9 @@ class Tabs {
     })
 
     webv.addEventListener('will-navigate', (e) => {
-      inp_url.value = e.url
+      if (!e.url.includes('ob://new_tab')) {
+        inp_url.value = e.url
+      }
     })
 
     webv.addEventListener('page-title-updated', (e) => {
@@ -329,13 +333,17 @@ class Tabs {
   webview_toggleDevTools(id) {
     var webv = document.getElementById(`webview-${id}`)
 
-    if (webv.isDevToolsOpen()) {
+    if (webv.isDevToolsOpened()) {
       webv.closeDevTools()
     } else {
       webv.openDevTools()
     }
   }
   //#endregion
+
+  getWebView(id) {
+    return document.getElementById(`webview-${id}`)
+  }
 
 }
 
