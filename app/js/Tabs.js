@@ -42,7 +42,7 @@ class Tabs {
       var title = tabObject.title
       var favicon = (tabObject.favicon == null ? 'app/images/favicon_404.svg' : tabObject.favicon)
       var id = this['counter']
-      var url = tabObject.url || "https://duckduckgo.com/chrome_newtab"
+      var url = tabObject.url || "ob://new_tab"
 
       var tab_obj = {
         title: title,
@@ -126,9 +126,10 @@ class Tabs {
         var url = inp_url.value
 
         // Internal URL matching like "chrome://<page>"
-        if (url.startsWith('ob://')) {
-          this.webviewChangeURL(`https://duckduckgo.com/chrome_newtab`, id)
-          return
+        /* MOVED TO ./scripts/protocols.js */
+
+        if (url.startsWith('ob')) {
+          return this.webviewChangeURL(url, id)
         }
 
 
@@ -343,7 +344,7 @@ class TabItem {
     this['title'] = tab_object.title
     this['favicon'] = (tab_object.favicon == null ? 'app/images/favicon_404.svg' : tab_object.favicon)
     this['id'] = tab_object.tabId
-    this['url'] = tab_object.url || "https://duckduckgo.com/chrome_newtab"
+    this['url'] = tab_object.url || "ob://new_tab"
 
     this['evnt_func'] = events
   }
