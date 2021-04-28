@@ -32,6 +32,10 @@ protocol.registerFileProtocol('ob', (request, callback) => {
 
             break;
 
+        case 'version':
+            return_path = path.normalize(`${ob_pages}/version.html`)
+            break; 
+
         case 'new_tab':
         default:
             return_path = path.normalize(`${ob_pages}/new_tab.html`)

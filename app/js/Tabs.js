@@ -131,8 +131,10 @@ class Tabs {
         /* MOVED TO ./scripts/protocols.js */
 
         if (url.startsWith('ob') || url.startsWith('file')) {
+          this.toggleNodeintegration(id, true)
           return this.webviewChangeURL(url, id)
         }
+        this.toggleNodeintegration(id, false)
 
 
         if (/(https?:\/\/|file:\/\/)?([\w\-])+\.{1}([a-zA-Z]{2,63})([\/\w-]*)*\/?\??([^#\n\r]*)?#?([^\n\r]*)/gm.test(url)) {
@@ -337,6 +339,16 @@ class Tabs {
       webv.closeDevTools()
     } else {
       webv.openDevTools()
+    }
+  }
+
+  toggleNodeintegration(id, on_off) {
+    var webv = document.getElementById(`webview-${id}`)
+
+    if(!on_off && webv.hasAttribute('nodeintegration')) {
+      webv.removeAttribute('nodeintegration')
+    } else if(on_off && !webv.hasAttribute('nodeintegration')) {
+      webv.setAttribute('nodeintegration', '')
     }
   }
   //#endregion

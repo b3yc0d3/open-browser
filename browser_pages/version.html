@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version informations</title>
+
+    <link rel="stylesheet" href="ob://resources/css/main.min.css">
+    <link rel="stylesheet" href="ob://resources/css/version.min.css">
+
+    <script src="ob://resources/js/version.js"></script>
+
+</head>
+
+<body>
+    <div id="outer">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                <tr>
+                    <td class="label">Open Browser</td>
+                    <td class="value">{{OB_VERSION}} (GitHub Build) {{OS_FULLNAME}} ({{ARCH}})</td>
+                </tr>
+                <tr>
+                    <td class="label">Electron</td>
+                    <td class="value">{{ELECTRON_VERSION}}</td>
+                </tr>
+                <tr>
+                    <td class="label">Chrome</td>
+                    <td class="value">{{CHROME_VERSION}}</td>
+                </tr>
+                <tr>
+                    <td class="label">Operating System</td>
+                    <td class="value">{{OS_NAME}}</td>
+                </tr>
+                <tr>
+                    <td class="label">JavaScript</td>
+                    <td class="value">{{JS_VERSION}}</td>
+                </tr>
+                <tr>
+                    <td class="label">User-Agent</td>
+                    <td class="value">{{USER_AGENT}}</td>
+                </tr>
+                <tr>
+                    <td class="label">GitHub Repo</td>
+                    <td class="value"><a href="{{GIT_REPO_URI}}">{{GIT_REPO_URI}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

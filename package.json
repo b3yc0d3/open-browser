@@ -1,13 +1,14 @@
 {
   "name": "open-browser",
   "productName": "Open Browser",
-  "version": "1.7.0",
+  "version": "1.8.9",
   "description": "A browser that respects your privacy",
   "main": "main.js",
   "author": "NikiNikOfficially",
   "license": "ISC",
   "dependencies": {
     "electron": "^11.1.1",
+    "getos": "^3.2.1",
     "mime-types": "^2.1.30",
     "node-fetch": "^2.6.1",
     "platform-folders": "^0.5.2"

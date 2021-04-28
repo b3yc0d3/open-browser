@@ -25,6 +25,7 @@ body {
     padding: 0;
     margin: 0;
     background: var(--tab-hover);
+    color: var(--icon-default);
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -40,6 +41,16 @@ input {
 
         &:focus {
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+
+a {
+    &:link {
+        color: var(--background-accent);
+
+        &:hover {
+            color: #3e67a5;
         }
     }
 }

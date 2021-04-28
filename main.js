@@ -3,15 +3,42 @@ const path = require('path')
 const url = require('url')
 const ipc = require('electron').ipcMain
 const os = require('os')
-const fs = require('fs')
 const packJSON = require('./package.json')
+const getos = require('getos')
 
 //libs
 const { adblocker } = require('./scripts/adblocker.js')
 
 let win
-var userAgent = `Mozilla/5.0 ({{OS_INFO}}; {{ARCH}}) Gecko/20100101 Hypero/{{HYPERO_VERSION}} Chrome/{{CHROME_VERSION}} Safari/537.36`
+var userAgent = `Mozilla/5.0 ({{OS_INFO}}; {{ARCH}}) Gecko/20100101 OB/{{HYPERO_VERSION}} Chrome/{{CHROME_VERSION}} Safari/537.36`
 var AdBlocker = null
+
+/* GLOBAL VARS */
+
+getos((e, os_info) => {
+
+    global.info = {
+        name: packJSON.productName,
+        user_agent: generateUA(userAgent),
+        versions: {
+            dusk: packJSON.version,
+            javascript: process.versions.v8,
+            chromium: process.versions.chrome,
+            electron: process.versions.electron
+        },
+        os: {
+            platform: `${os_info.os}`,
+            codename: `${os_info.codename || '?'}`,
+            name: `${os_info.dist}`,
+            arch: os.arch()
+        },
+        repo: {
+            url: packJSON.repository.url,
+            type: packJSON.repository.type
+        }
+    }
+
+})
 
 //CUSTOM MENU
 const customMenu = [{
