@@ -1,0 +1,14 @@
+
+.icon-trash_can:before { content: '\e800'; } /* '' */
+.icon-dark_mode:before { content: '\e801'; } /* '' */
+.icon-navigate_next:before { content: '\e802'; } /* '' */
+.icon-themes:before { content: '\e803'; } /* '' */
+.icon-gpp_good:before { content: '\e804'; } /* '' */
+.icon-security:before { content: '\e805'; } /* '' */
+.icon-tune:before { content: '\e806'; } /* '' */
+.icon-settings:before { content: '\e807'; } /* '' */
+.icon-front_hand:before { content: '\e808'; } /* '' */
+.icon-clean_hands:before { content: '\e809'; } /* '' */
+.icon-search:before { content: '\e80a'; } /* '' */
+.icon-github:before { content: '\e80b'; } /* '' */
+.icon-open_in_new_window:before { content: '\e80c'; } /* '' */

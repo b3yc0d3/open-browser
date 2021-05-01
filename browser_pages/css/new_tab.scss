@@ -1,0 +1,23 @@
+.center {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    h1 {
+        color: #ffffff;
+        padding: 0;
+        margin: 0;
+        font-size: 40px;
+    }
+
+    #inpSearch {
+        position: absolute;
+        margin-top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 110%;
+        font-size: 17px;
+        padding: 13px;
+    }
+}

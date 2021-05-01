@@ -1,0 +1,38 @@
+<html lang="en" ng-app="chromeTabsApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Hypero</title>
+
+    <link rel="stylesheet" href="app/css/style.min.css">
+    <link rel="stylesheet" href="app/css/tabs.min.css">
+    <link rel="stylesheet" href="app/vendors/fontello-d2aece8e/css/fontello.css">
+    <!---->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <script src="app/js/functions.js"></script>
+    <script src="app/js/events.js"></script>
+    <script src="app/js/handler.js" defer></script>
+
+</head>
+
+<body>
+
+    <div class="tab-container" id="tab-container">
+        <ul id="tabs">
+            <button id="buttonAddNewTab" class="btn btn-default"onclick="addTab({ title: null, favicon: null })">
+                <i class="symbol icon-add"></i>
+            </button>
+            <!-- <button class="btn btn-default" onclick="addTab()"><i class="symbol icon-add"></i></button> -->
+        </ul>
+    </div>
+
+    <div id="tab-content">
+    </div>
+
+</body>
+
+</html>

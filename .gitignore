@@ -1,4 +1,5 @@
-app/css/*.min.css
+*.min.css
 node_modules/*
 lists/list_00.json
 backup_*
+package-lock.json

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="ob://resources/css/main.min.css">
+    <link rel="stylesheet" href="ob://resources/css/settings.min.css">
+    <link rel="stylesheet" href="ob://resources/fontello-d2177e13/css/fontello.css">
+
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/settings.min.css">
+    <link rel="stylesheet" href="fontello-d2177e13/css/fontello.css">
+
+    <link rel="shortcut icon" href="ob://resources/images/favicon_Settings.svg" type="image/svg+xml">
+
+    <script src="ob://resources/js/settings.js" defer></script>
+
+    <script src="js/settings.js" defer></script>
+
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Settings</h1>
+        </div>
+        <div>
+            <div id="search">
+                <div id="icon">
+                    <i class="symbole icon-search"></i>
+                </div>
+                <input type="text" id="inpSearch" placeholder="Search in settings">
+            </div>
+        </div>
+    </header>
+
+    <div id="content">
+
+        <div class="group">
+            <p>About</p>
+
+            <div class="inner">
+
+                <settings-button-row>
+                    <div class="link" onclick="openInNewTab('https://github.com/NikiNikOfficially/open-browser')">
+                        <div class="text">
+                            <p>GitHub</p>
+                            <p>Open Browser</p>
+                        </div>
+                        <div class="icon">
+                            <i class="symbole icon-open_in_new_window"></i>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="separator"></div>
+                        <button>Repository on GitHub</button>
+                        <form action="https://github.com/users/follow?target=NikiNikOfficially" method="post">
+                            <input type="submit" value="Follow">
+                        </form>
+                    </div>
+                </settings-button-row>
+            </div>
+        </div>
+
+        <div class="group">
+            <p>Data protection and security</p>
+
+            <div class="inner">
+
+                <link-card link="LINK">
+                    <div class="icon">
+                        <i class="symbol icon-trash_can"></i>
+                    </div>
+                    <div class="label">
+                        <p>Clear browser data</p>
+                        <p>Clear the cache and delete history, cookies and other data</p>
+                    </div>
+                    <div class="value">
+                        <i class="symbol icon-navigate_next"></i>
+                    </div>
+                </link-card>
+
+                <link-card link="LINK">
+                    <div class="icon">
+                        <i class="symbol icon-trash_can"></i>
+                    </div>
+                    <div class="label">
+                        <p>Cookies and other website data</p>
+                        <p>Third-party cookies</p>
+                    </div>
+                    <div class="value">
+                        <i class="symbol icon-navigate_next"></i>
+                    </div>
+                </link-card>
+
+                <link-card link="LINK">
+                    <div class="icon">
+                        <i class="symbol icon-security"></i>
+                    </div>
+                    <div class="label">
+                        <p>Security</p>
+                        <p>Safe Browsing (protection from harmful websites) and other security settings</p>
+                    </div>
+                    <div class="value">
+                        <i class="symbol icon-navigate_next"></i>
+                    </div>
+                </link-card>
+
+                <link-card link="LINK">
+                    <div class="icon">
+                        <i class="symbol icon-tune"></i>
+                    </div>
+                    <div class="label">
+                        <p>Website settings</p>
+                        <p>Which information websites are allowed to use and display (e.g. location, camera, pop-ups)
+                        </p>
+                    </div>
+                    <div class="value">
+                        <i class="symbol icon-navigate_next"></i>
+                    </div>
+                </link-card>
+
+            </div>
+        </div>
+
+        <div class="group">
+            <p>Look</p>
+
+            <div class="inner">
+                <settings-toggle-button>
+                    <div class="label">Darkmode</div>
+                    <div class="value">
+                        <input type="checkbox">
+                    </div>
+                </settings-toggle-button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

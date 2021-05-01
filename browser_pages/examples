@@ -1,0 +1,48 @@
+<settings-toggle-button>
+    <div class="label">{{LABEL}}</div>
+    <div class="value">
+        <input type="checkbox">
+    </div>
+</settings-toggle-button>
+
+<link-card link="{{LINK}}">
+    <div class="icon">
+        <i class="symbol icon-trash_can"></i>
+    </div>
+    <div class="label">
+        <p>{{TITLE}}</p>
+        <p>{{DESCRIPTION}}</p>
+    </div>
+    <div class="value">
+        <i class="symbol icon-navigate_next"></i>
+    </div>
+</link-card>
+
+<settings-button>
+    <div class="icon">
+        <i class="symbol icon-github"></i>
+    </div>
+    <div class="label">
+        <p>{{TITLE}}</p>
+        <p>{{DESCRIPTION}}</p>
+    </div>
+    <div class="value">
+        {{BUTTON}}
+    </div>
+</settings-button>
+
+<settings-button-row>
+    <div class="link" onclick="openInNewTab('{{LINK}}')">
+        <div class="text">
+            <p>{{TITLE}}</p>
+            <p>{{DESCRIPTION_SHORT}}</p>
+        </div>
+        <div class="icon">
+            <i class="symbole icon-open_in_new_window"></i>
+        </div>
+    </div>
+    <div class="buttons">
+        <div class="separator"></div>
+        {{BUTTONS}}
+    </div>
+</settings-button-row>

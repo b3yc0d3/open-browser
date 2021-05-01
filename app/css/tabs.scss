@@ -1,0 +1,313 @@
+.tab-container {
+    background: var(--tab-color);
+    margin: 0;
+    padding: 0;
+    max-height: 40px;
+    user-select: none;
+    box-sizing: border-box;
+
+    ul {
+        margin: 0;
+        list-style-type: none;
+        line-height: 40px;
+        max-height: 40px;
+        overflow: hidden;
+        display: inline-block;
+        display: flex;
+        padding-right: 20px;
+        border-bottom: 5px solid var(--tab-active);
+        padding-left: 0;
+        list-style: none;
+
+        li {
+            height: 35px;
+            background: var(--tab-color);
+            position: relative;
+            width: 200px;
+            max-width: 200px;
+            min-width: 20px;
+            margin-left: 1px;
+            overflow: hidden;
+
+            &::before {
+                content: "";
+                position: absolute;
+                right: -1px;
+                height: 70%;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1px;
+                background: var(--border);
+            }
+
+            .top {
+                position: absolute;
+                height: 2px;
+                width: 100%;
+                background: var(--tab-color);
+                top: 0;
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-of-type {
+                &::before {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                background-color: var(--tab-hover);
+                > .top {
+                    background: var(--border);
+                }
+
+                a {
+                    &::before {
+                        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 70%, var(--tab-hover) 95%);
+                    }
+                }
+            }
+
+            a {
+                z-index: 3;
+                position: relative;
+                left: 25px;
+                display: block;
+                max-width: 75%;
+                text-decoration: none;
+                color: #ffffff;
+                padding: 3px 7px;
+                padding-left: 10px;
+                margin-top: 4px;
+
+                margin-right: 2px;
+                line-height: 1.42857143;
+                border: 1px solid transparent;
+                border-radius: 4px 4px 0 0;
+
+                position: relative;
+
+                white-space: nowrap;
+                overflow: hidden;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 70%, var(--tab-color) 95%);
+                    height: 100%;
+                    width: 100%;
+                    right: 0;
+                }
+            }
+
+            img {
+                position: absolute;
+                top: 50%;
+                left: 8px;
+                transform: translateY(-50%);
+                height: 20px;
+                width: 20px;
+            }
+
+            &.active {
+                z-index: 2;
+                background: var(--tab-active);
+                border-bottom: 2px solid var();
+
+                > .top {
+                    background: var(--background-accent);
+                }
+
+                &::before {
+                    display: none;
+                }
+
+                &:hover {
+                    background-color: var(--tab-active) !important;
+
+                    > .top {
+                        background: var(--background-accent);
+                    }
+                }
+
+                a {
+                    &::before {
+                        background: linear-gradient(90deg, rgba(255,255,255,0) 70%, var(--tab-active) 95%);
+                    }
+                }
+            }
+
+            .btnCloseTab {
+                z-index: 5;
+                position: absolute;
+                top: 50%;
+                right: 8px;
+                transform: translateY(-50%);
+                height: 23px;
+                width: 23px;
+                color: #ffffff;
+                border: none;
+                background: transparent;
+                outline: none;
+                border-radius: 3px;
+
+                &:hover {
+                    background: #404040;
+                }
+
+                i {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                }
+            }
+        }
+
+        .btn {
+            float: left;
+            height: 25px;
+            width: 25px;
+            min-width: 25px;
+            max-width: 25px;
+            margin: 5px;
+            border-color: var(--border);
+            outline: none;
+            position: relative;
+
+            i {
+                outline: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                color: #ffffff;
+            }
+
+            &.btn-default {
+                background: var(--tab-hover);
+                outline: none;
+                &:hover {
+                    background: var(--tab-active);
+                }
+
+                &:active {
+                    background: var(--tab-active);
+                }
+            }
+        }
+    }
+}
+
+#tab-content {
+    position: relative;
+    height: calc(100vh - 40px);
+    width: 100vw;
+    background: var(--tab-hover);
+    overflow: hidden;
+    .tab-pane {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--tab-active);
+
+        .controls {
+            display: flex;
+            padding: 5px;
+            padding-top: 0;
+
+            button {
+                position: relative;
+                height: 30px;
+                width: 30px;
+                background: transparent;
+                border-radius: 3px;
+                outline: none;
+                border: none;
+                margin: 0 2.5px;
+
+                i {
+                    font-size: 20px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                    color: var(--icon-default);
+                }
+
+                &:hover {
+                    background: var(--url-textbox);
+                }
+
+                &:first-child {
+                    margin-left: 0;
+                }
+
+                &.disabled {
+                    cursor: unset;
+                    > i {
+                        color: var(--icon-muted) !important;
+                    }
+                    &:hover {
+                        background: transparent !important;
+                    }
+                }
+            }
+
+            .inputURL {
+                position: relative;
+                margin: 0 2.5px;
+                height: 30px;
+                border-radius: 5px;
+                overflow: hidden;
+                background: var(--url-textbox);
+                flex: 1;
+                border: 2px solid transparent;
+
+                input {
+                    user-select: all;
+                    height: 28px;
+                    padding: 0 10px;
+                    outline: none;
+                    background: transparent;
+                    color: #ffffff;
+                    width: 100%;
+                    border: none;
+                    font-size: 14px;
+                }
+
+                &.secure {
+                    border-color: var(--color-green);
+                }
+
+                &.unsecure {
+                    border-color: var(--color-red);
+                }
+
+                &:focus-within {
+                    border-color: var(--background-accent) !important;
+                    background: var(--url-textbox-focus) !important;
+
+                    > input {
+                        background: var(--url-textbox-focus) !important;
+                    }
+                }
+            }
+        }
+
+        &.active {
+            display: block;
+        }
+
+        webview {
+            height: calc(100% - 35px);
+            width: 100%;
+        }
+    }
+}
