@@ -126,6 +126,8 @@ window.addEventListener('contextmenu', (e) => {
         }
     ]
 
+    menu = menu.filter(item => item.visible !== false)
+
     Menu.buildFromTemplate(menu).popup(remWindow)
 })
 
