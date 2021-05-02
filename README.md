@@ -7,7 +7,7 @@
 *open-browser* is a Browser that respects your privacy
 
 <p align="center">
-  <img width="80%" src="/git_data/Screenshot_20210203_012147_v1.7.0.png" />
+  <img width="80%" src="/git_data/Screenshot_20210502_153830.png" />
 </p>
 
 ### Features
