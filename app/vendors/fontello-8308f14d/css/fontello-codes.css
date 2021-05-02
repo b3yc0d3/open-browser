@@ -1,9 +1,11 @@
 
 .icon-trash_can:before { content: '\e800'; } /* '' */
 .icon-dark_mode:before { content: '\e801'; } /* '' */
+.icon-download:before { content: '\e802'; } /* '' */
 .icon-themes:before { content: '\e803'; } /* '' */
 .icon-gpp_good:before { content: '\e804'; } /* '' */
 .icon-security:before { content: '\e805'; } /* '' */
+.icon-bookmarks:before { content: '\e806'; } /* '' */
 .icon-settings:before { content: '\e807'; } /* '' */
 .icon-front_hand:before { content: '\e808'; } /* '' */
 .icon-clean_hands:before { content: '\e809'; } /* '' */
@@ -28,3 +30,5 @@
 .icon-more_vert:before { content: '\e81c'; } /* '' */
 .icon-pin:before { content: '\e81d'; } /* '' */
 .icon-nsfw:before { content: '\e81e'; } /* '' */
+.icon-history:before { content: '\e81f'; } /* '' */
+.icon-power_off:before { content: '\e820'; } /* '' */
