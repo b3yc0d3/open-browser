@@ -79,7 +79,7 @@ a {
         color: var(--background-accent);
 
         &:hover {
-            color: #3e67a5;
+            color: var(--background-accent-light);//#3e67a5;
         }
     }
 }
