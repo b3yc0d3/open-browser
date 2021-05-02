@@ -13,8 +13,8 @@
    fill="#ffffff"
    version="1.1"
    id="svg6"
-   sodipodi:docname="code_black_24dp.svg"
-   inkscape:export-filename="/home/nikinik/Dokumente/Programmirung/electron apps/open-browser/app/images/icons/code.png"
+   sodipodi:docname="content_copy_black_24dp.svg"
+   inkscape:export-filename="/home/nikinik/Dokumente/Programmirung/electron apps/open-browser/app/images/icons/copy.png"
    inkscape:export-xdpi="64"
    inkscape:export-ydpi="64"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)">
@@ -56,6 +56,6 @@
      fill="none"
      id="path2" />
   <path
-     d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+     d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
      id="path4" />
 </svg>

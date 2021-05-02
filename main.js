@@ -46,14 +46,14 @@ const customMenu = [{
     submenu: [
         {
             label: 'Reload',
-            accelerator: 'CmdOrCtrl+R',
+            accelerator: 'CmdOrCtrl+E',
             click(item, focusedWindow) {
                 if (focusedWindow) focusedWindow.reload()
             }
         },
         {
             label: 'Chrome DevTools',
-            accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+            accelerator: process.platform === 'darwin' ? 'Alt+Command+N' : 'Ctrl+Shift+N',
             click(item, focusedWindow) {
                 if (focusedWindow) focusedWindow.webContents.toggleDevTools()
             }
