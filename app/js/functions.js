@@ -95,12 +95,13 @@ function addTab(tabObject) {
     div_ctrls.appendChild(div_inputb)
     div_ctrls.classList.add('controls')
     div_ctrls.innerHTML += `<div id="custom-btns-${id}" style="display: flex; margin: 0 2.5px;"><button class="disabled"><i class="icon icon-download"></i></button></div>`
-    div_ctrls.innerHTML += `<button onclick=""><i class="icon icon-more_vert"></i></button>`
+    div_ctrls.innerHTML += `<button class="btn_mainMenu"><i class="icon icon-more_vert btn_mainMenu"></i></button>`
 
     webv.id = `webview-${id}`
     webv.setAttribute('src', url)
     webv.setAttribute('nodeintegration', '')
     webv.setAttribute('preload', 'app/js/preload.js')
+    webv.setAttribute('tabindex', '0')
 
     div_0.appendChild(div_ctrls)
     div_0.appendChild(webv)
@@ -155,6 +156,31 @@ function addEventListeners(id) {
             url: e.url
         })
     })
+    webv.addEventListener('ipc-message', onIpcMessage)
+}
+
+
+function onIpcMessage(event) {
+    const { args, channel } = event
+
+    switch (channel) {
+
+        case 'reload':
+            reload(focusedTab)
+            break;
+
+        case 'toggleDevTools':
+            toggleDevTools(focusedTab)
+            break;
+
+        case 'blur':
+            webViewBlur()
+            break;
+
+        case 'focus':
+            webViewFocused()
+            break;
+    }
 }
 
 function reload(id) {

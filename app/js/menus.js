@@ -1,23 +1,53 @@
+var mainMenu = null
 
-var menu = document.getElementById('main_menu')
+document.addEventListener('DOMContentLoaded', (e) => {
+    mainMenu = document.getElementById('main_menu')
 
-document.addEventListener('click', (e) => {
+    document.addEventListener('click', (e) => {
 
-    if (!e.target.classList.contains('menu_btn')) {
-        menu.style.display = 'none'
+        hideMainMenu()
 
-    } else if (e.target.classList.contains('menu_btn')) {
-        var style = e.target.currentStyle || window.getComputedStyle(e.target)
-        var width = e.target.offsetWidth,
-            margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight),
-            padding = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight),
-            border = parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth)
+        if (e.target.classList.contains('btn_mainMenu')) {
+            mainMenu.style.display = 'flex'
+            var y = getOffsetTop(e.target.offsetParent) + e.target.offsetParent.offsetWidth
+            var x = getOffsetLeft(e.target.offsetParent) - (200 - e.target.offsetParent.offsetWidth)
 
-        var y = e.path[0].offsetTop + e.target.offsetHeight
-        var x = e.path[0].offsetLeft - (width + margin - padding + border)
-
-        menu.style.top = y
-        menu.style.left = x
-        menu.style.display = 'block'
-    }
+            mainMenu.style.top = y
+            mainMenu.style.left = x
+        }
+    })
 })
+
+function getWidth(e) {
+    var style = e.currentStyle || window.getComputedStyle(e)
+    var width = e.offsetWidth,
+        margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight),
+        padding = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight),
+        border = parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth)
+
+    return width + margin + padding + border
+}
+
+function getOffsetLeft(elem) {
+    var offsetLeft = 0;
+    do {
+        if (!isNaN(elem.offsetLeft)) {
+            offsetLeft += elem.offsetLeft;
+        }
+    } while (elem = elem.offsetParent);
+    return offsetLeft;
+}
+
+function getOffsetTop(elem) {
+    var offsetTop = 0;
+    do {
+        if (!isNaN(elem.offsetTop)) {
+            offsetTop += elem.offsetTop;
+        }
+    } while (elem = elem.offsetParent);
+    return offsetTop;
+}
+
+function hideMainMenu() {
+    mainMenu.style.display = 'none'
+}

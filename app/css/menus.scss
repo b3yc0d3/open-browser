@@ -1,8 +1,10 @@
 browser-menu {
+    z-index: 1000;
+    position: absolute;
     background: var(--background-primary);
     border-radius: 5px;
     padding: 5px 0;
-    display: flex;
+    display: none;
     flex-flow: column;
     color: var(--text-normal);
     width: fit-content;

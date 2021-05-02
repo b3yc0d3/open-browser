@@ -22,9 +22,17 @@ function tabFocusChanged(tab) {
 }
 
 function tabClosed(tab) {
-    
+
 }
 
 function onTitleChange(details) {
     document.title = `${details.title} - ${helper.titleCase(packJS.name.replace('-', ' '))}`
+}
+
+function webViewBlur() {
+
+}
+
+function webViewFocused() {
+    hideMainMenu()
 }

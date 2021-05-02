@@ -49,3 +49,11 @@ window.addEventListener('contextmenu', (e) => {
 
     Menu.buildFromTemplate(menu).popup(remWindow)
 })
+
+window.addEventListener('blur', () => {
+    ipcRenderer.sendToHost('blur')
+})
+
+window.addEventListener('focus', () => {
+    ipcRenderer.sendToHost('focus')
+})
