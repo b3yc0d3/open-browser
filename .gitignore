@@ -3,3 +3,4 @@ node_modules/*
 lists/list_00.json
 backup_*
 package-lock.json
+test.*

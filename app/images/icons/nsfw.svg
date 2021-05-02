@@ -7,7 +7,7 @@
    viewBox="0 0 6.3499997 6.3500002"
    version="1.1">
   <rect
-     style="opacity:0.998;fill:#ffffff;fill-opacity:0.00869565;stroke:#000000;stroke-width:0.318089;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers"
+     style="opacity:0.998;fill:#ffffff;fill-opacity:0.00869565;stroke:#ffffff;stroke-width:0.318089;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers"
      id="rect943"
      width="6.0319109"
      height="2.5660949"
@@ -17,7 +17,7 @@
     <g
        aria-label="NSFW"
        id="text873"
-       style="font-style:normal;font-weight:normal;font-size:1.77103px;line-height:2.21379px;font-family:sans-serif;letter-spacing:0.0248925px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.0442759">
+       style="font-style:normal;font-weight:normal;font-size:1.77103px;line-height:2.21379px;font-family:sans-serif;letter-spacing:0.0248925px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0442759">
       <path
          d="M 1.7877698,3.8045444 H 1.5689853 L 1.0077556,2.9112466 V 3.8045444 H 0.78897118 V 2.5454528 H 1.0077556 L 1.5707149,3.4422097 V 2.5454528 h 0.2170549 z"
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';text-align:center;text-anchor:middle;stroke-width:0.0442759"
