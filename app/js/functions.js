@@ -1,4 +1,5 @@
 var validUrl = require('valid-url')
+var nsfw_websits = require(__dirname + '/lists/nsfw_websites.json')
 
 function addTab(tabObject) {
     var title = (tabObject.title == null ? "New Title" : tabObject.title)
@@ -137,13 +138,28 @@ function addEventListeners(id) {
     })
     webv.addEventListener('did-finish-load', (e) => {
         webview_didFinishlLoad(webv, reloadIcon, btnGoBack, btnGoForward)
+
+        var url = e.target.getURL()
+
+        if (isNSFW(url)) {
+            console.log('yes')
+            webv.send('nsfw_warning')
+        }
     })
     webv.addEventListener('page-favicon-updated', (e) => {
         setFavicon(id, e.favicons[0])
     })
+
     webv.addEventListener('will-navigate', (e) => {
         if (!e.url.includes('ob://new_tab')) {
             inp_url.value = e.url
+        }
+    })
+
+    webv.addEventListener('did-navigate', (e) => {
+        var url = e.url
+        if (!url.includes('ob://new_tab')) {
+            inp_url.value = url
         }
     })
     webv.addEventListener('page-title-updated', (e) => {
@@ -159,6 +175,10 @@ function addEventListeners(id) {
     webv.addEventListener('ipc-message', onIpcMessage)
 }
 
+function isNSFW(url) {
+
+    return nsfw_websits.list.some(pattern => url.includes(pattern))
+}
 
 function onIpcMessage(event) {
     const { args, channel } = event
@@ -268,8 +288,6 @@ function loadUrl(url, id) {
             _url = `https://duckduckgo.com/?q=${url.replaceAll(' ', '+')}`
         }
     }
-
-    console.log(_url)
 
     webv.src = _url
     inpURL.value = _url

@@ -36,109 +36,124 @@
             </div>
         </div>
     </header>
+    <div id="inner">
+        <div id="content">
 
-    <div id="content">
+            <div class="group">
+                <p>About</p>
 
-        <div class="group">
-            <p>About</p>
+                <div class="inner">
 
-            <div class="inner">
-
-                <settings-button-row>
-                    <div class="link" onclick="openInNewTab('https://github.com/NikiNikOfficially/open-browser')">
-                        <div class="text">
-                            <p>GitHub</p>
-                            <p>Open Browser</p>
+                    <settings-button-row>
+                        <div class="link" onclick="openInNewTab('https://github.com/NikiNikOfficially/open-browser')">
+                            <div class="text">
+                                <p>GitHub</p>
+                                <p>Open Browser</p>
+                            </div>
+                            <div class="icon">
+                                <i class="symbole icon-open_in_new_window"></i>
+                            </div>
                         </div>
+                        <div class="buttons">
+                            <div class="separator"></div>
+                            <button>Repository on GitHub</button>
+                            <form action="https://github.com/users/follow?target=NikiNikOfficially" method="post">
+                                <input type="submit" value="Follow">
+                            </form>
+                        </div>
+                    </settings-button-row>
+                </div>
+            </div>
+
+            <div class="group">
+                <p>Data protection and security</p>
+
+                <div class="inner">
+
+                    <link-card link="LINK">
                         <div class="icon">
-                            <i class="symbole icon-open_in_new_window"></i>
+                            <i class="symbol icon-trash_can"></i>
                         </div>
-                    </div>
-                    <div class="buttons">
-                        <div class="separator"></div>
-                        <button>Repository on GitHub</button>
-                        <form action="https://github.com/users/follow?target=NikiNikOfficially" method="post">
-                            <input type="submit" value="Follow">
-                        </form>
-                    </div>
-                </settings-button-row>
+                        <div class="label">
+                            <p>Clear browser data</p>
+                            <p>Clear the cache and delete history, cookies and other data</p>
+                        </div>
+                        <div class="value">
+                            <i class="symbol icon-navigate_next"></i>
+                        </div>
+                    </link-card>
+
+                    <link-card link="LINK">
+                        <div class="icon">
+                            <i class="symbol icon-trash_can"></i>
+                        </div>
+                        <div class="label">
+                            <p>Cookies and other website data</p>
+                            <p>Third-party cookies</p>
+                        </div>
+                        <div class="value">
+                            <i class="symbol icon-navigate_next"></i>
+                        </div>
+                    </link-card>
+
+                    <link-card link="LINK">
+                        <div class="icon">
+                            <i class="symbol icon-security"></i>
+                        </div>
+                        <div class="label">
+                            <p>Security</p>
+                            <p>Safe Browsing (protection from harmful websites) and other security settings</p>
+                        </div>
+                        <div class="value">
+                            <i class="symbol icon-navigate_next"></i>
+                        </div>
+                    </link-card>
+
+                    <link-card link="LINK">
+                        <div class="icon">
+                            <i class="symbol icon-tune"></i>
+                        </div>
+                        <div class="label">
+                            <p>Website settings</p>
+                            <p>Which information websites are allowed to use and display (e.g. location, camera,
+                                pop-ups)
+                            </p>
+                        </div>
+                        <div class="value">
+                            <i class="symbol icon-navigate_next"></i>
+                        </div>
+                    </link-card>
+
+                </div>
             </div>
-        </div>
 
-        <div class="group">
-            <p>Data protection and security</p>
+            <div class="group">
+                <p>Discretion</p>
 
-            <div class="inner">
-
-                <link-card link="LINK">
-                    <div class="icon">
-                        <i class="symbol icon-trash_can"></i>
-                    </div>
-                    <div class="label">
-                        <p>Clear browser data</p>
-                        <p>Clear the cache and delete history, cookies and other data</p>
-                    </div>
-                    <div class="value">
-                        <i class="symbol icon-navigate_next"></i>
-                    </div>
-                </link-card>
-
-                <link-card link="LINK">
-                    <div class="icon">
-                        <i class="symbol icon-trash_can"></i>
-                    </div>
-                    <div class="label">
-                        <p>Cookies and other website data</p>
-                        <p>Third-party cookies</p>
-                    </div>
-                    <div class="value">
-                        <i class="symbol icon-navigate_next"></i>
-                    </div>
-                </link-card>
-
-                <link-card link="LINK">
-                    <div class="icon">
-                        <i class="symbol icon-security"></i>
-                    </div>
-                    <div class="label">
-                        <p>Security</p>
-                        <p>Safe Browsing (protection from harmful websites) and other security settings</p>
-                    </div>
-                    <div class="value">
-                        <i class="symbol icon-navigate_next"></i>
-                    </div>
-                </link-card>
-
-                <link-card link="LINK">
-                    <div class="icon">
-                        <i class="symbol icon-tune"></i>
-                    </div>
-                    <div class="label">
-                        <p>Website settings</p>
-                        <p>Which information websites are allowed to use and display (e.g. location, camera, pop-ups)
-                        </p>
-                    </div>
-                    <div class="value">
-                        <i class="symbol icon-navigate_next"></i>
-                    </div>
-                </link-card>
-
+                <div class="inner">
+                    <settings-toggle-button>
+                        <div class="label">NSFW Warning</div>
+                        <div class="value">
+                            <input type="checkbox">
+                        </div>
+                    </settings-toggle-button>
+                </div>
             </div>
-        </div>
 
-        <div class="group">
-            <p>Look</p>
+            <div class="group">
+                <p>Look</p>
 
-            <div class="inner">
-                <settings-toggle-button>
-                    <div class="label">Darkmode</div>
-                    <div class="value">
-                        <input type="checkbox">
-                    </div>
-                </settings-toggle-button>
+                <div class="inner">
+                    <settings-toggle-button>
+                        <div class="label">Darkmode</div>
+                        <div class="value">
+                            <input type="checkbox">
+                        </div>
+                    </settings-toggle-button>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </body>
 

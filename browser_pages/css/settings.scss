@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 header {
     position: sticky;
     top: 0;
@@ -64,184 +68,85 @@ header {
         }
     }
 }
-
-#content {
-    position: absolute;
-    top: 53px;
-    left: 50%;
-    transform: translateX(-50%);
+#inner {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100vw;
     height: calc(100vh - 53px);
-    width: 60%;
 
-    .group {
-        margin: 25px;
-        p {
-            font-weight: normal;
-            margin: 0;
-            margin-bottom: 10px;
-            padding: 0;
-            font-size: 14px;
-        }
+    #content {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+        width: 60%;
 
-        .inner {
-            width: 100%;
-            background: var(--background-secondary);
-            border-radius: 5px;
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.22);
-            user-select: none;
-            overflow: hidden;
-
-            settings-toggle-button {
-                padding: 0 20px;
-                display: grid;
-                grid-template-columns: 1fr auto;
-                grid-template-rows: 1fr;
-                gap: 0px 0px;
-                grid-template-areas: ". .";
-                cursor: pointer;
-
-                .label {
-                    padding: 12px 0;
-                }
-                .value {
-                    padding: 12px 0;
-                }
-
-                &:hover {
-                    background: var(--background-primary);
-                }
-
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        .group {
+            margin: 25px;
+            p {
+                font-weight: normal;
+                margin: 0;
+                margin-bottom: 10px;
+                padding: 0;
+                font-size: 14px;
             }
 
-            link-card {
-                padding: 0 20px;
-                display: grid;
-                grid-template-columns: auto 1fr auto;
-                grid-template-rows: 1fr;
-                gap: 0px 0px;
-                grid-template-areas: ". . .";
-                cursor: pointer;
+            .inner {
+                width: 100%;
+                background: var(--background-secondary);
+                border-radius: 5px;
+                box-shadow: 0 2px 2px rgba(0, 0, 0, 0.22);
+                user-select: none;
+                overflow: hidden;
 
-                .icon {
-                    padding: 12px 10px;
-                    padding-left: 0px;
-                    margin-right: 5px;
-                    display: flex;
-
-                    i {
-                        margin: auto;
-                        font-size: 20px;
-                    }
-                }
-
-                .label {
-                    padding: 12px 0;
-
-                    p {
-                        margin: 0;
-
-                        &:first-of-type {
-                            color: var(--text-normal);
-                        }
-
-                        &:last-of-type {
-                            color: var(--text-muted);
-                        }
-                    }
-                }
-
-                .value {
-                    padding: 12px 10px;
-                    padding-right: 0px;
-                    display: flex;
-
-                    i {
-                        margin: auto;
-                        font-size: 19px;
-                    }
-                }
-
-                &:hover {
-                    background: var(--background-primary);
-                }
-
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            }
-
-            settings-button {
-                padding: 0 20px;
-                display: grid;
-                grid-template-columns: auto 1fr;
-                grid-template-rows: 1fr;
-                gap: 0px 0px;
-                grid-template-areas: ". . .";
-
-                .icon {
-                    padding: 12px 10px;
-                    padding-left: 0px;
-                    margin-right: 5px;
-                    display: flex;
-
-                    i {
-                        margin: auto;
-                        font-size: 20px;
-                    }
-                }
-
-                .label {
-                    padding: 12px 0;
-
-                    p {
-                        margin: 0;
-
-                        &:first-of-type {
-                            color: var(--text-normal);
-                        }
-
-                        &:last-of-type {
-                            color: var(--text-muted);
-                        }
-                    }
-                }
-
-                .value {
-                    padding: 12px 10px;
-                    padding-right: 0px;
-                    display: flex;
-
-                    i {
-                        margin: auto;
-                        font-size: 19px;
-                    }
-                }
-
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            }
-
-            settings-button-row {
-                padding: 0 0;
-                display: grid;
-                grid-template-columns: auto 1fr;
-                grid-template-rows: 1fr;
-                gap: 0px 0px;
-                grid-template-areas: ". .";
-
-                .link {
-                    padding: 12px 20px;
-                    padding-right: 0;
+                settings-toggle-button {
+                    padding: 0 20px;
                     display: grid;
-                    grid-template-columns: auto auto;
+                    grid-template-columns: 1fr auto;
                     grid-template-rows: 1fr;
                     gap: 0px 0px;
                     grid-template-areas: ". .";
                     cursor: pointer;
 
+                    .label {
+                        padding: 12px 0;
+                    }
+                    .value {
+                        padding: 12px 0;
+                    }
+
                     &:hover {
                         background: var(--background-primary);
                     }
 
-                    .text {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                }
+
+                link-card {
+                    padding: 0 20px;
+                    display: grid;
+                    grid-template-columns: auto 1fr auto;
+                    grid-template-rows: 1fr;
+                    gap: 0px 0px;
+                    grid-template-areas: ". . .";
+                    cursor: pointer;
+
+                    .icon {
+                        padding: 12px 10px;
+                        padding-left: 0px;
+                        margin-right: 5px;
+                        display: flex;
+
+                        i {
+                            margin: auto;
+                            font-size: 20px;
+                        }
+                    }
+
+                    .label {
+                        padding: 12px 0;
+
                         p {
                             margin: 0;
 
@@ -255,44 +160,149 @@ header {
                         }
                     }
 
-                    .icon {
-                        width: 32px;
+                    .value {
+                        padding: 12px 10px;
+                        padding-right: 0px;
                         display: flex;
-                        float: right;
+
+                        i {
+                            margin: auto;
+                            font-size: 19px;
+                        }
+                    }
+
+                    &:hover {
+                        background: var(--background-primary);
+                    }
+
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                }
+
+                settings-button {
+                    padding: 0 20px;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    grid-template-rows: 1fr;
+                    gap: 0px 0px;
+                    grid-template-areas: ". . .";
+
+                    .icon {
+                        padding: 12px 10px;
+                        padding-left: 0px;
+                        margin-right: 5px;
+                        display: flex;
 
                         i {
                             margin: auto;
                             font-size: 20px;
                         }
                     }
-                }
 
-                .buttons {
-                    padding: 12px 10px;
-                    padding-left: 0px;
-                    align-items: center;
-                    display: flex;
-                    flex-direction: row;
+                    .label {
+                        padding: 12px 0;
 
-                    button,
-                    input[type="submit"] {
-                        margin-inline-end: 20px;
+                        p {
+                            margin: 0;
+
+                            &:first-of-type {
+                                color: var(--text-normal);
+                            }
+
+                            &:last-of-type {
+                                color: var(--text-muted);
+                            }
+                        }
                     }
 
-                    .separator {
-                        margin-inline-start: 0;
-                        border-inline-start: 1px solid rgba(0, 0, 0, 0.1);
-                        flex-shrink: 0;
-                        height: 32px;
-                        margin: 0 16px;
+                    .value {
+                        padding: 12px 10px;
+                        padding-right: 0px;
+                        display: flex;
+
+                        i {
+                            margin: auto;
+                            font-size: 19px;
+                        }
                     }
+
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
                 }
 
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            }
+                settings-button-row {
+                    padding: 0 0;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    grid-template-rows: 1fr;
+                    gap: 0px 0px;
+                    grid-template-areas: ". .";
 
-            &:last-child {
-                border: none;
+                    .link {
+                        padding: 12px 20px;
+                        padding-right: 0;
+                        display: grid;
+                        grid-template-columns: auto auto;
+                        grid-template-rows: 1fr;
+                        gap: 0px 0px;
+                        grid-template-areas: ". .";
+                        cursor: pointer;
+
+                        &:hover {
+                            background: var(--background-primary);
+                        }
+
+                        .text {
+                            p {
+                                margin: 0;
+
+                                &:first-of-type {
+                                    color: var(--text-normal);
+                                }
+
+                                &:last-of-type {
+                                    color: var(--text-muted);
+                                }
+                            }
+                        }
+
+                        .icon {
+                            width: 32px;
+                            display: flex;
+                            float: right;
+
+                            i {
+                                margin: auto;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+
+                    .buttons {
+                        padding: 12px 10px;
+                        padding-left: 0px;
+                        align-items: center;
+                        display: flex;
+                        flex-direction: row;
+
+                        button,
+                        input[type="submit"] {
+                            margin-inline-end: 20px;
+                        }
+
+                        .separator {
+                            margin-inline-start: 0;
+                            border-inline-start: 1px solid rgba(0, 0, 0, 0.1);
+                            flex-shrink: 0;
+                            height: 32px;
+                            margin: 0 16px;
+                        }
+                    }
+
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                }
+
+                &:last-child {
+                    border: none;
+                }
             }
         }
     }
