@@ -9,8 +9,8 @@ var symboleNames = {
     videocam: 'icon-videocam',
 }
 
-function addSymbol(name) {
-    var icons = document.getElementById(`icons-${focusedTab}`)
+function addSymbol(name, id = null) {
+    var icons = document.getElementById(`icons-${id != null ? id : focusedTab}`)
 
     if (name in symboleNames) {
         /* create icon item */
@@ -24,8 +24,8 @@ function addSymbol(name) {
     }
 }
 
-function removeSymbole(name) {
-    var icons = document.getElementById(`icons-${focusedTab}`)
+function removeSymbole(name, id = null) {
+    var icons = document.getElementById(`icons-${(id != null ? id : focusedTab)}`)
 
     if (name in symboleNames) {
         var items = icons.children
@@ -40,8 +40,8 @@ function removeSymbole(name) {
     }
 }
 
-function clearSymboles() {
-    var icons = document.getElementById(`icons-${focusedTab}`)
+function clearSymboles(id = null) {
+    var icons = document.getElementById(`icons-${id != null ? id : focusedTab}`)
 
     icons.innerHTML = ''
 }

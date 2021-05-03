@@ -149,7 +149,7 @@ function addEventListeners(id) {
 
     /* WebView */
     webv.addEventListener('did-start-loading', (e) => {
-        clearSymboles()
+        clearSymboles(id)
         webview_didStartLoading(webv, reloadIcon, btnGoBack, btnGoForward)
     })
     webv.addEventListener('did-finish-load', (e) => {
@@ -160,7 +160,7 @@ function addEventListeners(id) {
         if (isNSFW(url)) {
             console.log('yes')
             webv.send('nsfw_warning')
-            addSymbol('nsfw')
+            addSymbol('nsfw', id)
         }
     })
     webv.addEventListener('page-favicon-updated', (e) => {

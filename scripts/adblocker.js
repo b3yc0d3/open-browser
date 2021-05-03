@@ -6,7 +6,7 @@ class adblocker {
         this['blackList'] = []
 
         black_list.forEach((url) => {
-            JSON.parse(fs.readFileSync(url)).forEach((data) => {
+            JSON.parse(fs.readFileSync(__dirname.replace('/scripts', '') + url)).forEach((data) => {
                 this['blackList'].push(data)
             })
         })
@@ -17,6 +17,7 @@ class adblocker {
      */
     start() {
         this['browserWindow'].webContents.session.webRequest.onBeforeRequest({ urls: this['blackList'] }, (details, callback) => {
+            console.log(details)
             callback({ cancel: true })
         })
     }

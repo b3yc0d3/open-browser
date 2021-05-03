@@ -105,7 +105,7 @@ app.on('ready', () => {
     require('./scripts/protocols')
 
     /* Deep Integrated Blocker */
-    AdBlocker = new adblocker(win, [__dirname + '/lists/list_01.json', __dirname + '/lists/list_02.json'])
+    AdBlocker = new adblocker(win, ['/lists/list_01.json', '/lists/list_02.json', '/lists/porn.json'])
     AdBlocker.start()
 })
 
