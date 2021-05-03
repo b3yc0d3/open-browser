@@ -21,62 +21,41 @@ window.addEventListener('contextmenu', (e) => {
     var selectedElement = e.path[0]
     var selectedElementParent = e.path[1]
 
-    var isLink = selectedElement.localName === 'a'
+    /*var isLink = selectedElement.localName === 'a'
     var isParentLink = selectedElementParent.localName === 'a'
     var linkSrc = (isLink ? selectedElement.href : null)
     var parentLinkSrc = (isParentLink ? selectedElementParent.href : null)
+    */
+
+    var linkHref = isLINK(e.path)
+    var isLink = (linkHref != null ? true : false)
 
     var isImage = selectedElement.localName === 'img'
     var imageSrc = (isImage ? selectedElement.currentSrc : null)
 
 
     var menu = [
-        { /* reload page */
-            label: 'Reload',
-            type: 'normal',
-            accelerator: 'CmdOrCtrl+R',
-            click: () => {
-                location.reload()
-            },
-            visible: !isImage,
-            enabled: !isImage,
-            icon: 'app/images/icons/refresh.png'
-        },
-        { /* Copy Link */
+        { /* open link in new tab */
             label: 'Open Link in New Tab',
             type: 'normal',
             click: () => {
-                if (isLink) {
-                    openInNewTab(linkSrc)
-                }
-                if (isParentLink) {
-                    openInNewTab(parentLinkSrc)
-                }
+                openInNewTab(linkHref)
             },
-            enabled: isLink || isParentLink,
-            visible: isLink || isParentLink
-        },
-        {
-            type: 'separator',
-            visible: isLink || isParentLink
+            enabled: isLink,
+            visible: isLink
         },
         { /* Copy Link */
             label: 'Copy Link',
             type: 'normal',
             click: () => {
-                if (isLink) {
-                    copyTextToClipboard(linkSrc)
-                }
-                if (isParentLink) {
-                    copyTextToClipboard(parentLinkSrc)
-                }
+                copyTextToClipboard(linkHref)
             },
-            enabled: isLink || isParentLink,
-            visible: isLink || isParentLink
+            enabled: isLink,
+            visible: isLink
         },
         {
             type: 'separator',
-            visible: isLink || isParentLink
+            visible: isLink
         },
         { /* open image in new tab */
             label: 'Open Image in New Tab',
@@ -126,6 +105,17 @@ window.addEventListener('contextmenu', (e) => {
         {
             type: 'separator'
         },
+        { /* reload page */
+            label: 'Reload',
+            type: 'normal',
+            accelerator: 'CmdOrCtrl+R',
+            click: () => {
+                location.reload()
+            },
+            visible: !isImage,
+            enabled: !isImage,
+            icon: 'app/images/icons/refresh.png'
+        },
         { /* open devtools */
             label: 'Inspect',
             type: 'normal',
@@ -173,6 +163,21 @@ ipcRenderer.on('nsfw_warning', () => {
 })
 
 ipcRenderer.on('nsfw_warning', (e, data) => { console.log('yes') })
+
+//#region Helper
+
+function isLINK(array) {
+    for (var i = 0; i < array.length - 1; i++) {
+        var localName = array[i].localName
+        var href = array[i].href || ""
+
+        if (localName == 'a' && href != "") {
+            return href
+        }
+    }
+
+    return null
+}
 
 function showNSFW() {
     var inner_html = '<div id="content">'
@@ -227,3 +232,4 @@ function hideNSFW() {
 
     website_title = null
 }
+//#endregion

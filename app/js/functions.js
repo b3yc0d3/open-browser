@@ -77,15 +77,17 @@ function addTab(tabObject) {
     btnGoForward.setAttribute('onclick', `goForward(${id})`)
 
     var btnReload = document.createElement('button')
+    btnReload.id = `btnreload-${id}`
     var btnReload_icon = document.createElement('i')
     btnReload_icon.id = `reloadIcon-${id}`
     btnReload_icon.classList.add('icon', 'icon-refresh')
     btnReload.appendChild(btnReload_icon)
-    btnReload.setAttribute('onclick', `reload(${id})`)
+    //btnReload.setAttribute('onclick', `reload(${id})`)
 
     inp_url.id = `inpurl-${id}`
     inp_url.setAttribute('type', 'text')
     inp_url.setAttribute('placeholder', 'search with duckduckgo or enter url')
+    inp_url.setAttribute('value', (url != "ob://new_tab" ? url : ''))
 
     div_inputb.classList.add('inputURL')
     div_inputb.appendChild(inp_url)
@@ -122,8 +124,16 @@ function addEventListeners(id) {
     var inp_url = document.getElementById(`inpurl-${id}`)
     var btnGoBack = document.getElementById(`btnGoBack-${id}`)
     var btnGoForward = document.getElementById(`btnGoForward-${id}`)
-    var btnGoForward = document.getElementById(`btnGoForward-${id}`)
+    var btnReload = document.getElementById(`btnreload-${id}`)
     var reloadIcon = document.getElementById(`reloadIcon-${id}`)
+
+    btnReload.addEventListener('click', (e) => {
+        if (webv.isLoading()) {
+            webv.stop()
+        } else {
+            reload(id)
+        }
+    })
 
     inp_url.addEventListener('keydown', (e) => {
         if (e.code === 'Enter') {
@@ -149,13 +159,11 @@ function addEventListeners(id) {
     webv.addEventListener('page-favicon-updated', (e) => {
         setFavicon(id, e.favicons[0])
     })
-
     webv.addEventListener('will-navigate', (e) => {
         if (!e.url.includes('ob://new_tab')) {
             inp_url.value = e.url
         }
     })
-
     webv.addEventListener('did-navigate', (e) => {
         var url = e.url
         if (!url.includes('ob://new_tab')) {
