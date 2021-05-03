@@ -60,6 +60,7 @@ function addTab(tabObject) {
     var div_inputb = document.createElement('div')
     var webv = document.createElement('webview')
     var inp_url = document.createElement('input')
+    var page_icons = document.createElement('div')
 
     div_0.classList.add('tab-pane')
     div_0.id = `container-${id}`
@@ -89,8 +90,12 @@ function addTab(tabObject) {
     inp_url.setAttribute('placeholder', 'search with duckduckgo or enter url')
     inp_url.setAttribute('value', (url != "ob://new_tab" ? url : ''))
 
+    page_icons.classList.add('icons')
+    page_icons.id = `icons-${id}`
+
     div_inputb.classList.add('inputURL')
     div_inputb.appendChild(inp_url)
+    div_inputb.appendChild(page_icons)
 
     div_ctrls.appendChild(btnGoBack)
     div_ctrls.appendChild(btnGoForward)
@@ -144,6 +149,7 @@ function addEventListeners(id) {
 
     /* WebView */
     webv.addEventListener('did-start-loading', (e) => {
+        clearSymboles()
         webview_didStartLoading(webv, reloadIcon, btnGoBack, btnGoForward)
     })
     webv.addEventListener('did-finish-load', (e) => {
@@ -154,6 +160,7 @@ function addEventListeners(id) {
         if (isNSFW(url)) {
             console.log('yes')
             webv.send('nsfw_warning')
+            addSymbol('nsfw')
         }
     })
     webv.addEventListener('page-favicon-updated', (e) => {

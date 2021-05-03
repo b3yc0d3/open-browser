@@ -136,7 +136,7 @@
 
                 a {
                     &::before {
-                        background: linear-gradient(90deg, rgba(255,255,255,0) 70%, var(--tab-active) 95%);
+                        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 70%, var(--tab-active) 95%);
                     }
                 }
             }
@@ -271,6 +271,12 @@
                 flex: 1;
                 border: 2px solid transparent;
 
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: 1fr;
+                gap: 0px 0px;
+                grid-template-areas: ". .";
+
                 input {
                     user-select: all;
                     height: 28px;
@@ -281,6 +287,31 @@
                     width: 100%;
                     border: none;
                     font-size: 14px;
+                }
+
+                .icons {
+                    display: flex;
+                    flex-flow: row;
+
+                    .icon {
+                        height: 27px;
+                        width: 27px;
+                        display: flex;
+
+                        &[name="nsfw"] {
+                            margin-right: 5px;
+                        }
+
+                        i {
+                            margin: auto;
+                            color: var(--icon-default);
+                            font-size: 20px;
+
+                            &.symbole.icon-nsfw::before {
+                                margin-left: -3.2;
+                            }
+                        }
+                    }
                 }
 
                 &.secure {
