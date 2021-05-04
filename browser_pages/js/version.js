@@ -1,11 +1,10 @@
 const { remote } = require('electron')
 
-var info = remote.getGlobal('info')
+var info = remote.getGlobal('browser').info
 
 document.addEventListener('DOMContentLoaded', async (e) => {
     console.log('yes')
     var body = document.getElementsByTagName('body')
-    var user_agent = navigator.userAgent
 
     for (var i = 0; i < body.length; i++) {
         var data = body[i].innerHTML
