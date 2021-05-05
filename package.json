@@ -1,7 +1,7 @@
 {
   "name": "open-browser",
   "productName": "Open Browser",
-  "version": "2.4.2",
+  "version": "2.5.11",
   "description": "A browser that respects your privacy",
   "main": "index.js",
   "author": "b3yc0d3",
