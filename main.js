@@ -1,3 +1,13 @@
+/*
+ * Created on Tue Jan 29 2021
+ *
+ * Copyright (c) 2021 b3yc0d3
+ *
+ * Filename: main.js
+ * Description: creates browser window
+*/
+
+
 const { app, BrowserWindow, Menu } = require('electron')
 const path = require('path')
 const url = require('url')

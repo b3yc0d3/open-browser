@@ -1,5 +1,6 @@
-var validUrl = require('valid-url')
-var nsfw_websits = require(__dirname + '/lists/nsfw_websites.json')
+const { OB_Settings } = require(__dirname + '/app/js/settings.js')
+
+var settings = new OB_Settings(remote.getGlobal('browser').paths.settings)
 
 function addTab(tabObject) {
     var title = (tabObject.title == null ? "New Title" : tabObject.title)
@@ -156,9 +157,9 @@ function addEventListeners(id) {
         webview_didFinishlLoad(webv, reloadIcon, btnGoBack, btnGoForward)
 
         var url = e.target.getURL()
+        let domain = (new URL(url))
 
-        if (isNSFW(url)) {
-            console.log('yes')
+        if (isNSFW(url) && !isInNSFWOfList(domain.hostname)) {
             webv.send('nsfw_warning')
             addSymbol('nsfw', id)
         }
@@ -190,11 +191,6 @@ function addEventListeners(id) {
     webv.addEventListener('ipc-message', onIpcMessage)
 }
 
-function isNSFW(url) {
-
-    return nsfw_websits.list.some(pattern => url.includes(pattern))
-}
-
 function onIpcMessage(event) {
     const { args, channel } = event
 
@@ -214,6 +210,11 @@ function onIpcMessage(event) {
 
         case 'focus':
             webViewFocused()
+            break;
+        
+        case 'nsfw--addToWhiteList':
+            console.log(args[0])
+            settings.nsfw_addToWhiteList(args[0])
             break;
     }
 }

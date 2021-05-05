@@ -5,6 +5,8 @@ const Menu = remote.Menu
 const remWindow = remote.getCurrentWindow()
 var nsfwFiler = null
 var website_title = null
+var currURL = location.href
+var currDomain = location.hostname
 
 document.addEventListener('DOMContentLoaded', (e) => {
     console.log('OB : READY')
@@ -187,8 +189,6 @@ ipcRenderer.on('nsfw_warning', () => {
     showNSFW()
 })
 
-ipcRenderer.on('nsfw_warning', (e, data) => { console.log('yes') })
-
 //#region Helper
 
 function isLINK(array) {
@@ -216,12 +216,22 @@ function showNSFW() {
 
     var div_content = document.createElement('div')
     div_content.id = 'ob--content'
+    div_content.style.maxWidth = '250px'
 
     var btnc = document.createElement('button')
     btnc.classList.add('ob--button')
     btnc.id = 'ob--button'
     btnc.innerText = 'continue on this page'
     btnc.addEventListener('click', (e) => {
+        hideNSFW()
+    })
+
+    var btnadd = document.createElement('button')
+    btnadd.classList.add('ob--button')
+    btnadd.id = 'ob--button'
+    btnadd.innerText = 'disable nsfw warning for this website'
+    btnadd.addEventListener('click', (e) => {
+        ipcRenderer.sendToHost('nsfw--addToWhiteList', currDomain)
         hideNSFW()
     })
 
@@ -232,10 +242,12 @@ function showNSFW() {
     var p_text = document.createElement('p')
     p_text.id = 'ob--p'
     p_text.textContent = 'This page is rated as "nsfw"'
+    p_text.style.textAlign = 'center'
 
     div_content.appendChild(img)
     div_content.appendChild(p_text)
     div_content.appendChild(btnc)
+    div_content.appendChild(btnadd)
 
     var nsfw_filter = document.createElement('div')
     nsfw_filter.id = 'ob--nsfw'

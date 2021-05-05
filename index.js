@@ -1,8 +1,42 @@
+/*
+ * Created on Tue May 04 2021
+ *
+ * Copyright (c) 2021 b3yc0d3
+ *
+ * Filename: index.js
+ * Description: inits open browser
+*/
+
+const getPath = require('platform-folders')
 const getos = require('getos')
 const packJSON = require('./package.json')
 const os = require('os')
+const fs = require('fs')
 
 var userAgent = `Mozilla/5.0 ({{OS_INFO}}; {{ARCH}}) Gecko/20100101 OB/{{HYPERO_VERSION}} Chrome/{{CHROME_VERSION}} Safari/537.36`
+
+
+var userData = getPath.getConfigHome()
+var baseFolder = `${userData}/Open Browser`
+var path_settingsFile = baseFolder + '/settings.json'
+var settingsFile = null
+
+var settings_raw = {
+    "history": baseFolder + '/history.ob',
+    "nsfw_warning": true,
+    "nsfw_warning_off": [],
+    "path_downlaod": getPath.getDownloadsFolder(),
+    "path_extensions": baseFolder + '/extensions'
+}
+/* Checking if files exsists */
+
+if (fs.existsSync(baseFolder)) { /* Check if folder exsists */
+    if (!fs.existsSync(path_settingsFile)) { /* check if settings file exsists */
+        fs.writeFileSync(path_settingsFile, JSON.stringify(settings_raw))
+    }
+} else {
+    return
+}
 
 /* GLOBAL VARS */
 //#region
@@ -31,10 +65,18 @@ global.browser = {
             url: packJSON.repository.url,
             type: packJSON.repository.type
         }
+    },
+    paths: {
+        settings: path_settingsFile
     }
 }
 
 //#endregion
+
+/* Start MAIN.JS */
+require('./main')
+
+
 
 function generateUA(pattern) {
     var OS_arch = os.arch()
@@ -170,6 +212,3 @@ function OSVersion() {
     }
     return OSVersion
 }
-
-/* Start MAIN.JS */
-require('./main')
