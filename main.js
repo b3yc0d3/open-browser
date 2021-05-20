@@ -56,6 +56,7 @@ function createWindow() {
             enableRemoteModule: true,
             webviewTag: true,
             webSecurity: false,
+            contextIsolation: false
         }
     })
 

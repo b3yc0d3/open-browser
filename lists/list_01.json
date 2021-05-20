@@ -1084,5 +1084,6 @@
     "*://*.rlcdn.com/*",
     "*://*.analytics.yahoo.com/*",
     "*://*.yandex.ru/*",
-    "*://*.go-mpulse.net/*"
+    "*://*.go-mpulse.net/*",
+    "*://*.adtng.com/*"
 ]

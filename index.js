@@ -12,6 +12,7 @@ const getos = require('getos')
 const packJSON = require('./package.json')
 const os = require('os')
 const fs = require('fs')
+const ipcMain = require('electron').ipcMain
 
 var userAgent = `Mozilla/5.0 ({{OS_INFO}}; {{ARCH}}) Gecko/20100101 OB/{{HYPERO_VERSION}} Chrome/{{CHROME_VERSION}} Safari/537.36`
 
@@ -76,6 +77,27 @@ global.browser = {
 /* Start MAIN.JS */
 require('./main')
 
+/**
+ * IPC LISTENER
+ */
+ipcMain.on('history', (event, arg) => {
+    var param = arg[0]
+    arg.shift()
+    var args = arg
+
+    switch (param) {
+        case 'add':
+
+            break;
+
+        case 'clear':
+
+            break;
+
+        default:
+            break;
+    }
+})
 
 
 function generateUA(pattern) {

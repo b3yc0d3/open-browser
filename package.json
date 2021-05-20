@@ -12,6 +12,7 @@
     "mime-types": "^2.1.30",
     "node-fetch": "^2.6.1",
     "platform-folders": "^0.5.3",
+    "sqlite3": "^5.0.2",
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
