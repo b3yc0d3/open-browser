@@ -14,7 +14,7 @@
 - Deep integrated Blocker [see more](../../wiki/Deep-Integrated-Blocker)
 
 ### Developer Setup
-1. clone this repo `git clone https://github.com/NikiNikOfficially/open-browser.git`
+1. clone this repo `git clone https://github.com/b3yc0d3/open-browser.git`
 2. cd in the folder of the cloned repo and execute `npm i` to install all necessary packages
 3. execute `electron .` to run the Browser (in developer mode)
 
