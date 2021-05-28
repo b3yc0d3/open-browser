@@ -13,6 +13,7 @@ const packJSON = require('./package.json')
 const os = require('os')
 const fs = require('fs')
 const ipcMain = require('electron').ipcMain
+const { OB_Settings } = require('./scripts/settings.js')
 
 var userAgent = `Mozilla/5.0 ({{OS_INFO}}; {{ARCH}}) Gecko/20100101 OB/{{HYPERO_VERSION}} Chrome/{{CHROME_VERSION}} Safari/537.36`
 
@@ -21,6 +22,8 @@ var userData = getPath.getConfigHome()
 var baseFolder = `${userData}/Open Browser`
 var path_settingsFile = baseFolder + '/settings.json'
 var settingsFile = null
+
+const browserSettings = new OB_Settings(path_settingsFile)
 
 var settings_raw = {
     "history": baseFolder + '/history.ob',
@@ -72,7 +75,8 @@ global.browser = {
     },
     paths: {
         settings: path_settingsFile
-    }
+    },
+    settings: browserSettings
 }
 
 //#endregion

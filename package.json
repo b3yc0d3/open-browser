@@ -1,7 +1,7 @@
 {
   "name": "open-browser",
   "productName": "Open Browser",
-  "version": "2.6.17",
+  "version": "2.6.30",
   "description": "A browser that respects your privacy",
   "main": "index.js",
   "author": "b3yc0d3",
@@ -9,6 +9,7 @@
   "dependencies": {
     "electron": "^11.1.1",
     "getos": "^3.2.1",
+    "lodash": "^4.17.21",
     "mime-types": "^2.1.30",
     "node-fetch": "^2.6.1",
     "platform-folders": "^0.5.3",

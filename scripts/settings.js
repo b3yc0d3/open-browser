@@ -8,6 +8,7 @@
 */
 
 const fs = require('fs')
+const lodash = require('lodash')
 
 class OB_Settings {
     constructor(path) {
@@ -27,11 +28,11 @@ class OB_Settings {
     }
 
     get(key, fallback) {
-        return this['settings'][key] || fallback
+        return lodash.get(this['settings'], key) || fallback
     }
 
     set(key, value) {
-        this['settings'][key] = value
+        lodash.set(this['settings'], key, value)
         this.save()
     }
 
@@ -41,7 +42,7 @@ class OB_Settings {
     }
 
     nsfw_addToWhiteList(url) {
-        if(!this['settings'].nsfw_warning_off.includes(url)) {
+        if (!this['settings'].nsfw_warning_off.includes(url)) {
             this['settings'].nsfw_warning_off.push(url)
             this.save()
         }
