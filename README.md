@@ -13,6 +13,7 @@ We are currently trying to implement GPC in Open-Browser.\
 
 ### Features
 - Deep integrated Blocker [see more](../../wiki/Deep-Integrated-Blocker)
+- GPC [*WIP*]
 
 ### Developer Setup
 1. clone this repo `git clone https://github.com/b3yc0d3/open-browser.git`
