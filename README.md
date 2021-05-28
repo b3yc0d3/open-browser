@@ -1,10 +1,15 @@
 ![PLATFORMS](https://img.shields.io/badge/platform-linux%20x86__x64%20%7C%20windows%20x86__x64-%23375b91) ![NODE VERSION](https://img.shields.io/badge/Electron-v11.1.1-blue?style=flat) ![NODE VERSION](https://img.shields.io/badge/NodeJS-v14.17.0-green?style=flat) ![NPM VERSION](https://img.shields.io/badge/npm-v7.13.0-orange?style=flat)
+---
 ### what is open-browser?
 *open-browser* is a Browser that respects your privacy
 
 <p align="center">
   <img width="80%" src="/git_data/Screenshot_20210502_153830.png" />
 </p>
+
+## INFO
+We are currently trying to implement GPC in Open-Browser.\
+[See more](https://globalprivacycontrol.github.io/gpc-spec/)
 
 ### Features
 - Deep integrated Blocker [see more](../../wiki/Deep-Integrated-Blocker)
