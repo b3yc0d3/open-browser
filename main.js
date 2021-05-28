@@ -15,6 +15,7 @@ const ipc = require('electron').ipcMain
 
 //libs
 const { adblocker } = require('./scripts/adblocker.js')
+const { GlobalPrivacyControl } = require('./scripts/privacy.js')
 
 let win
 var AdBlocker = null
@@ -87,6 +88,10 @@ app.on('ready', () => {
     /* Deep Integrated Blocker */
     AdBlocker = new adblocker(win, ['/lists/list_01.json', '/lists/list_02.json', '/lists/porn.json'])
     AdBlocker.start()
+
+    /* Privacy Handlers */
+    GPC =  new GlobalPrivacyControl(win)
+    GPC.start()
 })
 
 app.on('window-all-closed', () => {
