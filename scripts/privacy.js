@@ -20,15 +20,26 @@ class GPC {
 
         this['browserWindow'].webContents.session.webRequest.onBeforeSendHeaders({ urls: ['<all_urls>'] }, (details, callback) => {
 
-            if (details.url.includes('127.0.0.1')) {
-                console.log(details.requestHeaders)
-            }
+            var headers = details.requestHeaders
+            var url = new URL(details.url)
 
-            var headers = {}
-            headers = details.requestHeaders
+            headers = this.__cleanUpHeaders(headers, 'Sec-Fetch')
+            headers['sec-gpc'] = '1'
 
             callback({ requestHeaders: headers })
         })
+    }
+
+    __cleanUpHeaders(headers, pattern) {
+        var _headers = headers
+
+        for(var header in _headers) {
+            if(header.startsWith(pattern) || header.includes(pattern) || header == pattern) {
+                delete _headers[header]
+            }
+        }
+
+        return _headers
     }
 }
 
