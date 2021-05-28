@@ -7,13 +7,14 @@
   <img width="80%" src="/git_data/Screenshot_20210502_153830.png" />
 </p>
 
-## INFO
+<!--## INFO
 We are currently trying to implement GPC in Open-Browser.\
 [See more](https://globalprivacycontrol.github.io/gpc-spec/)
+-->
 
 ### Features
 - Deep integrated Blocker [see more](../../wiki/Deep-Integrated-Blocker)
-- GPC [*WIP*]
+- GPC [see more](https://globalprivacycontrol.github.io/gpc-spec/)
 
 ### Developer Setup
 1. clone this repo `git clone https://github.com/b3yc0d3/open-browser.git`
