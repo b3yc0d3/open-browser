@@ -45,7 +45,7 @@
                 <div class="inner">
 
                     <settings-button-row>
-                        <div class="link" onclick="openInNewTab('https://github.com/NikiNikOfficially/open-browser')">
+                        <div class="link" onclick="openInNewTab('https\:\/\/github.com/NikiNikOfficially/open-browser')">
                             <div class="text">
                                 <p>GitHub</p>
                                 <p>Open Browser</p>
@@ -56,12 +56,25 @@
                         </div>
                         <div class="buttons">
                             <div class="separator"></div>
-                            <button>Repository on GitHub</button>
+                            <a class="ob--button" href="https://github.com/NikiNikOfficially/open-browser" target="_blank">Repository on GitHub</a>
                             <form action="https://github.com/users/follow?target=NikiNikOfficially" method="post">
                                 <input type="submit" value="Follow">
                             </form>
                         </div>
                     </settings-button-row>
+                </div>
+            </div>
+
+            <div class="group">
+                <p>Privacy</p>
+
+                <div class="inner">
+                    <settings-toggle-button>
+                        <div class="label">Global Privacy Control (GPC)</div>
+                        <div class="value">
+                            <input type="checkbox" id="cbGPC">
+                        </div>
+                    </settings-toggle-button>
                 </div>
             </div>
 
@@ -134,7 +147,7 @@
                     <settings-toggle-button>
                         <div class="label">NSFW Warning</div>
                         <div class="value">
-                            <input type="checkbox">
+                            <input type="checkbox" id="cbNSFWw">
                         </div>
                     </settings-toggle-button>
                 </div>

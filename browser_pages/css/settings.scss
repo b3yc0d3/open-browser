@@ -283,6 +283,7 @@ header {
                         display: flex;
                         flex-direction: row;
 
+                        .ob--button,
                         button,
                         input[type="submit"] {
                             margin-inline-end: 20px;
@@ -304,6 +305,10 @@ header {
                     border: none;
                 }
             }
+        }
+
+        &:last-child {
+            margin-bottom: 20px;
         }
     }
 }

@@ -27,7 +27,10 @@ var settings_raw = {
     "nsfw_warning": true,
     "nsfw_warning_off": [],
     "path_downlaod": getPath.getDownloadsFolder(),
-    "path_extensions": baseFolder + '/extensions'
+    "path_extensions": baseFolder + '/extensions',
+    "gpc": {
+        "enabled": true
+    }
 }
 /* Checking if files exsists */
 
