@@ -211,7 +211,7 @@ function onIpcMessage(event) {
         case 'focus':
             webViewFocused()
             break;
-        
+
         case 'nsfw--addToWhiteList':
             console.log(args[0])
             settings.nsfw_addToWhiteList(args[0])
@@ -289,7 +289,7 @@ function loadUrl(url, id) {
 
     toggleNodeintegration(id, false)
 
-    if (isURL(url)) {
+    if (isURL(url) || isIP(url)) {
         if (!url.startsWith('http')) {
             _url = `http://${url}`
         } else {
@@ -340,6 +340,15 @@ function isURL(url) {
     }
 
     return true
+}
+
+function isIP(url) {
+    var regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/gim
+    if (regex.test(url) || url.includes('localhost')) {
+        return true
+    }
+
+    return false
 }
 
 function toggleDevTools(id) {
