@@ -45,7 +45,7 @@ const customMenu = [{
 function createWindow() {
     win = new BrowserWindow({
         title: "Open Browser",
-        icon: path.join(__dirname, "/app/images/open_browser_32x32.png"),
+        icon: path.join(__dirname, "/app/images/linux/appicon_x64.png"),
         show: false,
         frame: true,
         minHeight: 500,
