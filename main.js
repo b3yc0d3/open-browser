@@ -81,6 +81,7 @@ app.on('ready', () => {
     createWindow()
     var menu = Menu.buildFromTemplate(customMenu)
     win.setMenu(menu)
+    win.setProgressBar(0.5)
 
     /* Init custom Protocols */
     require('./scripts/protocols')

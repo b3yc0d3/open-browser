@@ -1,6 +1,4 @@
-const { OB_Settings } = require(__dirname + '/app/js/settings.js')
-
-var settings = new OB_Settings(remote.getGlobal('browser').paths.settings)
+var settings = remote.getGlobal('browser').settings
 
 function addTab(tabObject) {
     var title = (tabObject.title == null ? "New Title" : tabObject.title)
@@ -133,6 +131,7 @@ function addEventListeners(id) {
     var btnReload = document.getElementById(`btnreload-${id}`)
     var reloadIcon = document.getElementById(`reloadIcon-${id}`)
 
+
     btnReload.addEventListener('click', (e) => {
         if (webv.isLoading()) {
             webv.stop()
@@ -140,7 +139,6 @@ function addEventListeners(id) {
             reload(id)
         }
     })
-
     inp_url.addEventListener('keydown', (e) => {
         if (e.code === 'Enter') {
             var url = inp_url.value
@@ -149,6 +147,10 @@ function addEventListeners(id) {
     })
 
     /* WebView */
+    webv.addEventListener('dom-ready', (e) => {
+        webv.executeJavaScript(`navigator.globalPrivacyControl = ${settings.get('gpc.enabled', false)}`)
+    })
+
     webv.addEventListener('did-start-loading', (e) => {
         clearSymboles(id)
         webview_didStartLoading(webv, reloadIcon, btnGoBack, btnGoForward)

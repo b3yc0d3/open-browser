@@ -13,16 +13,12 @@ var currDomain = location.hostname
 document.addEventListener('DOMContentLoaded', (e) => {
     console.log('OB : READY')
 
-    var GPC = document.createElement('script')
-    GPC.textContent = `navigator.globalPrivacyControl = ${settings.get('gpc.enabled', false)}`
-
     //#region NSFW warning
     var style = document.createElement('style')
     style.textContent = ':root{--background-accent: #913737;--background-accent-light: #aa4646}#ob--nsfw{z-index:9998;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);transition:0.5s ease-out;display:flex}#ob--nsfw #ob--content{position:absolute;z-index:999999;top:40%;left:50%;transform:translateY(-50%) translateX(-50%)}#ob--nsfw #ob--content #ob--img{display:block;margin:0 auto;width:40px;height:40px}#ob--nsfw #ob--content #ob--p{font-family:Helvetica, Arial, sans-serif;color:#fff;margin:16px 0}#ob--nsfw #ob--content #ob--button{z-index:10000;color:#fff;width:100%}.ob--button{outline:none;color:var(--text-normal);background:var(--background-accent);transition:0.1s ease-in-out;-webkit-tap-highlight-color:transparent;align-items:center;border-radius:4px;box-sizing:border-box;cursor:pointer;display:inline-flex;flex-shrink:0;font-weight:500;height:32px;justify-content:center;min-width:5.14em;outline-width:0;padding:8px 16px;position:relative;user-select:none;text-decoration:none;--ink-color: white;--paper-ripple-opacity: 0.32;background-color:var(--background-accent);border:none}.ob--button:hover{background-color:var(--background-accent-light)}.ob--button.outline{background:transparent;border:1px solid rgba(0,0,0,0.1);color:var(--background-accent)}.ob--button.outline:hover{background:rgba(0,0,0,0.05)}'
     //#endregion
 
     document.head.append(style)
-    document.head.append(GPC)
 
 })
 
