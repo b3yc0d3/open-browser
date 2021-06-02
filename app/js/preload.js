@@ -177,16 +177,6 @@ window.addEventListener('focus', () => {
     ipcRenderer.sendToHost('focus')
 })
 
-window.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.code === 'KeyR') {
-        location.reload()
-    }
-
-    if (e.ctrlKey && e.shiftKey && e.code === 'KeyI') {
-        ipcRenderer.sendToHost('toggleDevTools')
-    }
-})
-
 ipcRenderer.on('nsfw_warning', () => {
     showNSFW()
 })

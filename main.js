@@ -7,13 +7,13 @@
  * Description: creates browser window
 */
 
-
 const { app, BrowserWindow, Menu } = require('electron')
 const path = require('path')
 const url = require('url')
 const ipc = require('electron').ipcMain
 
 //libs
+const { menuDebug, menuWindow, menuView, menuTools } = require('./menu.js')
 const { adblocker } = require('./scripts/adblocker.js')
 const { GlobalPrivacyControl } = require('./scripts/privacy.js')
 
@@ -21,25 +21,11 @@ let win
 var AdBlocker = null
 
 //CUSTOM MENU
-const customMenu = [{
-    label: 'Debug',
-    submenu: [
-        {
-            label: 'Reload',
-            accelerator: 'CmdOrCtrl+E',
-            click(item, focusedWindow) {
-                if (focusedWindow) focusedWindow.reload()
-            }
-        },
-        {
-            label: 'Chrome DevTools',
-            accelerator: process.platform === 'darwin' ? 'Alt+Command+N' : 'Ctrl+Shift+N',
-            click(item, focusedWindow) {
-                if (focusedWindow) focusedWindow.webContents.toggleDevTools()
-            }
-        }
-    ]
-}]
+const customMenu = []
+customMenu.push(menuWindow)
+customMenu.push(menuView)
+customMenu.push(menuTools)
+customMenu.push(menuDebug)
 
 //CREATE WINDOW
 function createWindow() {
@@ -91,7 +77,7 @@ app.on('ready', () => {
     AdBlocker.start()
 
     /* Privacy Handlers */
-    GPC =  new GlobalPrivacyControl(win)
+    GPC = new GlobalPrivacyControl(win)
     GPC.start()
 })
 

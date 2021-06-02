@@ -136,7 +136,7 @@ function addEventListeners(id) {
         if (webv.isLoading()) {
             webv.stop()
         } else {
-            reload(id)
+            reloadTab(id)
         }
     })
     inp_url.addEventListener('keydown', (e) => {
@@ -221,8 +221,8 @@ function onIpcMessage(event) {
     }
 }
 
-function reload(id) {
-    var webv = document.getElementById(`webview-${id}`)
+function reloadTab(id = null) {
+    var webv = document.getElementById(`webview-${(id == null ? focusedTab : id)}`)
     if (webv.isLoading()) {
         webv.stop()
     } else {
@@ -231,7 +231,7 @@ function reload(id) {
 }
 
 function focuseTab(id) {
-    var _id = id
+    var _id = (id == null ? focusedTab : id)
 
     /* Check if given ID is valid */
     if (document.getElementById(`tab-${_id}`) == undefined) {
@@ -312,25 +312,26 @@ function loadUrl(url, id) {
 }
 
 function goBack(id) {
-    var webv = document.getElementById(`webview-${id}`)
+    var webv = document.getElementById(`webview-${(id == null ? focusedTab : id)}`)
     if (webv.canGoBack()) {
         webv.goBack()
     }
 }
 
 function goForward(id) {
-    var webv = document.getElementById(`webview-${id}`)
+    var webv = document.getElementById(`webview-${(id == null ? focusedTab : id)}`)
     if (webv.canGoForward()) {
         webv.goForward()
     }
 }
 
 function closeTab(id) {
-    document.getElementById(`tab-${id}`).remove()
-    document.getElementById(`container-${id}`).remove()
-    delete tabs[id]
+    var _id = (id == null ? focusedTab : id)
+    document.getElementById(`tab-${_id}`).remove()
+    document.getElementById(`container-${_id}`).remove()
+    delete tabs[_id]
 
-    if (lastFocusedTabID != null && focusedTab.id == id) {
+    if (lastFocusedTabID != null && focusedTab.id == _id) {
         focuseTab(lastFocusedTabID)
     }
 }
@@ -354,7 +355,8 @@ function isIP(url) {
 }
 
 function toggleDevTools(id) {
-    var webv = document.getElementById(`webview-${id}`)
+    var _id = (id == null ? focusedTab : id)
+    var webv = document.getElementById(`webview-${_id}`)
 
     if (webv.isDevToolsOpened()) {
         webv.closeDevTools()
