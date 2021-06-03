@@ -6,7 +6,7 @@ class adblocker {
         this['blackList'] = []
 
         black_list.forEach((url) => {
-            JSON.parse(fs.readFileSync(__dirname.replace('/scripts', '') + url)).forEach((data) => {
+            JSON.parse(fs.readFileSync(__dirname.replace('/scripts', '').replace('\\scripts', '') + url)).forEach((data) => {
                 this['blackList'].push(data)
             })
         })
