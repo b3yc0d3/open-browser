@@ -14,11 +14,11 @@ const ipc = require('electron').ipcMain
 
 //libs
 const { menuDebug, menuWindow, menuView, menuTools } = require('./menu.js')
-const { adblocker } = require('./scripts/adblocker.js')
+const { DeepIntegratedBlocker } = require('./scripts/deep_integrated_blocker.js')
 const { GlobalPrivacyControl } = require('./scripts/privacy.js')
 
 let win
-var AdBlocker = null
+var DIB = null
 
 //CUSTOM MENU
 const customMenu = []
@@ -73,8 +73,8 @@ app.on('ready', () => {
     require('./scripts/protocols')
 
     /* Deep Integrated Blocker */
-    AdBlocker = new adblocker(win, ['/lists/list_01.json', '/lists/list_02.json', '/lists/porn.json'])
-    AdBlocker.start()
+    DIB = new DeepIntegratedBlocker(win, ['/lists/list_01.json', '/lists/list_02.json', '/lists/porn.json'])
+    DIB.start()
 
     /* Privacy Handlers */
     GPC = new GlobalPrivacyControl(win)

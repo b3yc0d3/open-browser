@@ -1,6 +1,6 @@
 var fs = require('fs')
 
-class adblocker {
+class DeepIntegratedBlocker {
     constructor(browserWindow, black_list) {
         this['browserWindow'] = browserWindow
         this['blackList'] = []
@@ -16,6 +16,8 @@ class adblocker {
      * Start's the AdBlocker
      */
     start() {
+        console.log('[DIB] started...')
+
         this['browserWindow'].webContents.session.webRequest.onBeforeRequest({ urls: this['blackList'] }, (details, callback) => {
             console.log(details)
             callback({ cancel: true })
@@ -23,4 +25,4 @@ class adblocker {
     }
 }
 
-module.exports.adblocker = adblocker
+module.exports.DeepIntegratedBlocker = DeepIntegratedBlocker
