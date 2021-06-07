@@ -1,7 +1,7 @@
 {
   "name": "open-browser",
   "productName": "Open Browser",
-  "version": "2.7.35",
+  "version": "2.7.38",
   "description": "A browser that respects your privacy",
   "main": "index.js",
   "author": "b3yc0d3",
@@ -29,6 +29,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NikiNikOfficially/open-browser.git"
+    "url": "https://github.com/b3yc0d3/open-browser.git"
   }
 }

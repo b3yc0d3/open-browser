@@ -23,8 +23,6 @@ var baseFolder = `${userData}/Open Browser`
 var path_settingsFile = baseFolder + '/settings.json'
 var settingsFile = null
 
-const browserSettings = new OB_Settings(path_settingsFile)
-
 var settings_raw = {
     "history": baseFolder + '/history.ob',
     "nsfw_warning": true,
@@ -42,8 +40,11 @@ if (fs.existsSync(baseFolder)) { /* Check if folder exsists */
         fs.writeFileSync(path_settingsFile, JSON.stringify(settings_raw))
     }
 } else {
-    return
+    fs.mkdirSync(baseFolder)
 }
+
+/* SETTING UP HANDLERS */
+const browserSettings = new OB_Settings(path_settingsFile)
 
 /* GLOBAL VARS */
 //#region
