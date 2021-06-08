@@ -26,6 +26,7 @@ class GPC {
 
                 headers = this.__cleanUpHeaders(headers, 'Sec-Fetch')
                 headers['sec-gpc'] = '1'
+                headers['User-Agent'] = global.browser.info.user_agent
 
                 callback({ requestHeaders: headers })
             }

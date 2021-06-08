@@ -15,8 +15,7 @@ const fs = require('fs')
 const ipcMain = require('electron').ipcMain
 const { OB_Settings } = require('./scripts/settings.js')
 
-var userAgent = `Mozilla/5.0 ({{OS_INFO}}; {{ARCH}}) Gecko/20100101 OB/{{HYPERO_VERSION}} Chrome/{{CHROME_VERSION}} Safari/537.36`
-
+var userAgent = `Mozilla/5.0 ({{OS_INFO}}) AppleWebKit/537.36 (KHTML, like Gecko) Open-Browser/{{OB_VERSION}} Chrome/{{CHROME_VERSION}} Safari/537.36`
 
 var userData = getPath.getConfigHome()
 var baseFolder = `${userData}/Open Browser`
@@ -118,127 +117,32 @@ function generateUA(pattern) {
     pat = pat.replace('{{ARCH}}', OS_arch)
     pat = pat.replace('{{OS_INFO}}', OSVersion())
     pat = pat.replace('{{CHROME_VERSION}}', process.versions.chrome)
-    pat = pat.replace('{{HYPERO_VERSION}}', packJSON.version)
+    pat = pat.replace('{{OB_VERSION}}', packJSON.version)
 
     return pat
 }
 
 function OSVersion() {
-    var OS_type = os.type()
-    var OSVersion = ''
+    var osType = os.type()
+    var osVersion
 
-    if (OS_type == 'Windows_NT') { // Windows
-        var os_rel = os.release().split('.')[0] + '.' + os.release().split('.')[1]
+    switch (osType) {
+        case 'Windows_NT':
+            var nt_version = os.release().split('.')[0] + '.' + os.release().split('.')[1]
+            osVersion = `Window NT ${nt_version}; ${(os.arch == 'x64' ? `Win64; x64` : `Win86; x86`)}`
+            break;
 
-        switch (os_rel) {
-            case '10.0': // Windows 10
-                OSVersion += 'Windows 10'
-                break;
+        case 'Linux':
+            osVersion = `X11; Linux ${(os.arch == "x64" ? `x86_x64` : `x86`)}`
+            break;
 
-            case '6.3': // Windows 8.1
-                OSVersion += 'Windows 8.1'
-                break;
+        case 'Darwin':
+                osVersion = `Macintosh; Mac OS X ${os.release().split(',')[0]}.${os.release().split(',')[1]}`
+            break;
 
-            case '6.2': // Windows 8
-                OSVersion += 'Windows 8'
-                break;
-
-            case '6.1': // Windows 7
-                OSVersion += 'Windows 7'
-                break;
-
-            case '6.0': // Windows Vista
-                OSVersion += 'Windows Vista'
-                break;
-
-            case '5.2': // Windows XP Professional x64 Edition
-            case '5.1': // Windows XP
-                OSVersion += 'Windows XP'
-                break;
-
-            case '4.90': // Windows ME
-                OSVersion += 'Windows ME'
-                break;
-
-            case '5.0': // Windows 2000
-                OSVersion += 'Windows 2000'
-                break;
-
-            case '4.10': // Windows 98
-                OSVersion += 'Windows 98'
-                break;
-
-            case '4.0': // Windows NT 4.0
-                OSVersion += 'Windows NT 4.0'
-                break;
-
-            case '4.00': // Windows 95
-                OSVersion += 'Windows 95'
-                break;
-
-            case '3.51': // Windows NT 3.51
-                OSVersion += 'Windows NT 3.51'
-                break;
-
-            case '3.5': // Windows NT 3.5
-                OSVersion += 'Windows NT 3.5'
-                break;
-
-            case '3.2': // Windows 3.2
-                OSVersion += 'Windows 3.2'
-                break;
-
-            case '3.11': // Windows for Workgroups 3.11
-                OSVersion += 'Windows for Workgroups 3.11'
-                break;
-
-            case '3.1': // Windows NT 3.1
-                OSVersion += 'Windows NT 3.1'
-                break;
-
-            case '3.10': // Windows 3.1
-                OSVersion += 'Windows 3.1'
-                break;
-
-            case '3.0': // Windows 3.0
-                OSVersion += 'Windows 3.0'
-                break;
-
-            case '2.11': // Windows 2.11
-                OSVersion += 'Windows 2.11'
-                break;
-
-            case '2.10': // Windows 2.10
-                OSVersion += 'Windows 2.10'
-                break;
-
-            case '2.03': // Windows 2.03
-                OSVersion += 'Windows 2.03'
-                break;
-
-            case '1.04': // Windows 1.04
-                OSVersion += 'Windows 1.04'
-                break;
-
-            case '1.03': // Windows 1.03
-                OSVersion += 'Windows 1.03'
-                break;
-
-            case '1.02': // Windows 1.02
-                OSVersion += 'Windows 1.02'
-                break;
-
-            case '1.01': // Windows 1.01
-                OSVersion += 'Windows 1.0'
-                break;
-
-            default:
-                break;
-        }
-    } else if (OS_type == 'Linux') { // Linux
-        OSVersion = `Linux ${os.release().split('.')[0]}.${os.release().split('.')[1]}`
-    } else if (OS_type == 'Darwin') { // macOS
-        OSVersion = `macOS ${os.release().split(',')[0]}.${os.release().split(',')[1]}`
+        default:
+            break;
     }
-    return OSVersion
+
+    return osVersion
 }

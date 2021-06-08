@@ -16,6 +16,7 @@ const ipc = require('electron').ipcMain
 const { menuDebug, menuWindow, menuView, menuTools } = require('./menu.js')
 const { DeepIntegratedBlocker } = require('./scripts/deep_integrated_blocker.js')
 const { GlobalPrivacyControl } = require('./scripts/privacy.js')
+const { CustomHeader } = require('./scripts/custom_header.js')
 
 let win
 var DIB = null
@@ -52,7 +53,7 @@ function createWindow() {
         pathname: path.join(__dirname, 'index.html'),
         protocol: "file:",
         slashes: true
-    }), { userAgent: global.browser.info.user_agent })
+    }), {})
 
     // On Ready
     win.once('ready-to-show', () => {
@@ -79,6 +80,12 @@ app.on('ready', () => {
     /* Privacy Handlers */
     GPC = new GlobalPrivacyControl(win)
     GPC.start()
+
+    /* Custom headers */
+    CH = new CustomHeader(win)
+    CH.init({
+        'User-Agent': global.browser.info.user_agent
+    })
 })
 
 app.on('window-all-closed', () => {
