@@ -74,7 +74,11 @@ app.on('ready', () => {
     require('./scripts/protocols')
 
     /* Deep Integrated Blocker */
-    DIB = new DeepIntegratedBlocker(win, ['/lists/list_01.json', '/lists/list_02.json', '/lists/porn.json'])
+    DIB = new DeepIntegratedBlocker(win, 
+    ['/lists/list_01.json', 
+    '/lists/list_02.json',
+    '/lists/list_03.json',
+    '/lists/porn.json'])
     DIB.start()
 
     /* Privacy Handlers */
