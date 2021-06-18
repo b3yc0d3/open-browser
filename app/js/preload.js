@@ -20,6 +20,19 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     document.head.append(style)
 
+    document.body.addEventListener('mouseup', (e) => {
+        if (typeof e === 'object') {
+            switch (e.button) {
+                case 3:
+                    goBack()
+                    break;
+                case 4:
+                    goForward()
+                    break;
+            }
+        }
+    })
+
 })
 
 window.addEventListener('contextmenu', (e) => {
@@ -180,6 +193,14 @@ window.addEventListener('focus', () => {
 ipcRenderer.on('nsfw_warning', () => {
     showNSFW()
 })
+
+function goBack() {
+    ipcRenderer.sendToHost('goBack')
+}
+
+function goForward() {
+    ipcRenderer.sendToHost('goForward')
+}
 
 //#region Helper
 

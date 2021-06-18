@@ -17,9 +17,12 @@ const { OB_Settings } = require('./scripts/settings.js')
 
 var userAgent = `Mozilla/5.0 ({{OS_INFO}}) AppleWebKit/537.36 (KHTML, like Gecko) Open-Browser/{{OB_VERSION}} Chrome/{{CHROME_VERSION}} Safari/537.36`
 
+userAgent = 'Mozilla/5.0 ({{OS_INFO}}) AppleWebKit/537.36 (KHTML, like Gecko) Open-Browser/{{OB_VERSION}} Safari/537.36'
+
 var userData = getPath.getConfigHome()
 var baseFolder = `${userData}/Open Browser`
 var path_settingsFile = baseFolder + '/settings.json'
+var path_extensions = baseFolder + '/extensions'
 var settingsFile = null
 
 var settings_raw = {
@@ -34,12 +37,16 @@ var settings_raw = {
 }
 /* Checking if files exsists */
 
-if (fs.existsSync(baseFolder)) { /* Check if folder exsists */
-    if (!fs.existsSync(path_settingsFile)) { /* check if settings file exsists */
-        fs.writeFileSync(path_settingsFile, JSON.stringify(settings_raw))
-    }
-} else {
+if (!fs.existsSync(baseFolder)) {
     fs.mkdirSync(baseFolder)
+}
+
+if (!fs.existsSync(path_settingsFile)) {
+    fs.writeFileSync(path_settingsFile, JSON.stringify(settings_raw))
+}
+
+if (!fs.existsSync(path_extensions)) {
+    fs.mkdirSync(path_extensions)
 }
 
 /* SETTING UP HANDLERS */
@@ -74,7 +81,8 @@ global.browser = {
         }
     },
     paths: {
-        settings: path_settingsFile
+        settings: path_settingsFile,
+        extensions: path_extensions
     },
     settings: browserSettings
 }
@@ -137,7 +145,7 @@ function OSVersion() {
             break;
 
         case 'Darwin':
-                osVersion = `Macintosh; Mac OS X ${os.release().split(',')[0]}.${os.release().split(',')[1]}`
+            osVersion = `Macintosh; Mac OS X ${os.release().split(',')[0]}.${os.release().split(',')[1]}`
             break;
 
         default:

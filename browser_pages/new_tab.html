@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +11,22 @@
     <link rel="stylesheet" href="ob://resources/css/new_tab.min.css">
 
 </head>
+
 <body>
     <div class="center">
         <h1>Search something</h1>
         <input id="inpSearch" type="text">
     </div>
+
+    <script defer>
+        var inpSearch = document.getElementById('inpSearch')
+
+        inpSearch.addEventListener('keyup', (e) => {
+            if (event.key === "Enter") {
+                location.href = `https://duckduckgo.com/?q=${inpSearch.value.replace(' ', '+')}`
+            }
+        })
+    </script>
 </body>
+
 </html>

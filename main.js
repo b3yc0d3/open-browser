@@ -17,6 +17,7 @@ const { menuDebug, menuWindow, menuView, menuTools } = require('./menu.js')
 const { DeepIntegratedBlocker } = require('./scripts/deep_integrated_blocker.js')
 const { GlobalPrivacyControl } = require('./scripts/privacy.js')
 const { CustomHeader } = require('./scripts/custom_header.js')
+const { ExtensionManager } = require('./scripts/extension_manager')
 
 let win
 var DIB = null
@@ -74,11 +75,11 @@ app.on('ready', () => {
     require('./scripts/protocols')
 
     /* Deep Integrated Blocker */
-    DIB = new DeepIntegratedBlocker(win, 
-    ['/lists/list_01.json', 
-    '/lists/list_02.json',
-    '/lists/list_03.json',
-    '/lists/porn.json'])
+    DIB = new DeepIntegratedBlocker(win,
+        ['/lists/list_01.json',
+            '/lists/list_02.json',
+            '/lists/list_03.json',
+            '/lists/porn.json'])
     DIB.start()
 
     /* Privacy Handlers */
@@ -90,6 +91,12 @@ app.on('ready', () => {
     CH.init({
         'User-Agent': global.browser.info.user_agent
     })
+
+    /* Extension Manager */
+    /*EM = new ExtensionManager(win.webContents.session)
+    EM.load(global.browser.paths.extensions)
+
+    global.browser.ExtensionManager = EM*/
 })
 
 app.on('window-all-closed', () => {

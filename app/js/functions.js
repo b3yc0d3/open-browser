@@ -26,8 +26,9 @@ function addTab(tabObject) {
     tab_li.setAttribute('tabID', id)
     tab_li.id = `tab-${id}`
     tab_li.addEventListener('click', (e) => {
-        focuseTab(id)
-        tabFocusChanged(tabObject)
+        if (e.path[0].nodeName != 'I') {
+            focuseTab(id)
+        }
     })
 
     line_div.classList.add('top')
@@ -40,8 +41,10 @@ function addTab(tabObject) {
 
     button_close.classList.add('btnCloseTab')
     button_close.addEventListener('click', (e) => {
-        closeTab(id)
-        tabClosed(tabObject)
+        if (e.path[0].nodeName == 'I') {
+            tabClosed(tabObject)
+            closeTab(id)
+        }
     })
     i_tag.classList.add('symbol')
     i_tag.classList.add('icon-close')
@@ -88,6 +91,7 @@ function addTab(tabObject) {
     inp_url.setAttribute('type', 'text')
     inp_url.setAttribute('placeholder', 'search with duckduckgo or enter url')
     inp_url.setAttribute('value', (url != "ob://new_tab" ? url : ''))
+    inp_url.setAttribute('onfocus', 'this.select()')
 
     page_icons.classList.add('icons')
     page_icons.id = `icons-${id}`
@@ -124,6 +128,7 @@ function addTab(tabObject) {
 }
 
 function addEventListeners(id) {
+    var div_0 = document.getElementById(`container-${id}`)
     var webv = document.getElementById(`webview-${id}`)
     var inp_url = document.getElementById(`inpurl-${id}`)
     var btnGoBack = document.getElementById(`btnGoBack-${id}`)
@@ -131,6 +136,18 @@ function addEventListeners(id) {
     var btnReload = document.getElementById(`btnreload-${id}`)
     var reloadIcon = document.getElementById(`reloadIcon-${id}`)
 
+    div_0.addEventListener('mouseup', (e) => {
+        if (typeof e === 'object') {
+            switch (e.button) {
+                case 3:
+                    goBack()
+                    break;
+                case 4:
+                    goForward()
+                    break;
+            }
+        }
+    })
 
     btnReload.addEventListener('click', (e) => {
         if (webv.isLoading()) {
@@ -217,6 +234,14 @@ function onIpcMessage(event) {
         case 'nsfw--addToWhiteList':
             console.log(args[0])
             settings.nsfw_addToWhiteList(args[0])
+            break;
+
+        case 'goBack':
+            goBack()
+            break;
+
+        case 'goForward':
+            goForward()
             break;
     }
 }
@@ -311,25 +336,31 @@ function loadUrl(url, id) {
     inpURL.value = _url
 }
 
-function goBack(id) {
+function goBack(id = null) {
     var webv = document.getElementById(`webview-${(id == null ? focusedTab : id)}`)
     if (webv.canGoBack()) {
         webv.goBack()
     }
 }
 
-function goForward(id) {
+function goForward(id = null) {
     var webv = document.getElementById(`webview-${(id == null ? focusedTab : id)}`)
     if (webv.canGoForward()) {
         webv.goForward()
     }
 }
 
-function closeTab(id) {
+function closeTab(id = null) {
     var _id = (id == null ? focusedTab : id)
     document.getElementById(`tab-${_id}`).remove()
     document.getElementById(`container-${_id}`).remove()
     delete tabs[_id]
+
+    if (Object.keys(tabs).length == 0) {
+        var window = remote.getCurrentWindow()
+        window.close()
+        return
+    }
 
     if (lastFocusedTabID != null && focusedTab.id == _id) {
         focuseTab(lastFocusedTabID)

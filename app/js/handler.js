@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 })
 
 function tabFocusChanged(tab) {
-
+    console.log(tab)
 }
 
 function tabClosed(tab) {

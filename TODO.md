@@ -1,0 +1,4 @@
+- [ ] right click on Go-Backarrow to show small history menu
+- [X] Mouse BTN3 and Mouse BTN4 for navigation
+- [ ] Settings
+- [X] Tab Bug - close browser after last tab closed
